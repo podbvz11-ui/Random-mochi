@@ -256,6 +256,12 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
 .spbar .trow{display:flex;gap:6px;flex-wrap:wrap}
 .spbar .btn small{opacity:.8}
 
+.watch .trow{display:flex;gap:6px}
+.watch.wbig{position:fixed;inset:3vh 3vw;z-index:60;box-shadow:0 0 0 100vmax rgba(4,6,14,.78);align-content:start;overflow:auto}
+.watch.wbig canvas{width:min(100%,calc((100vh - 190px) * 1.333));margin:0 auto;display:block}
+
+.selbox .debuff{font-size:12px;color:var(--accent);margin-top:2px}
+
 </style>
 </head>
 <body>
@@ -296,7 +302,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       <h2>게임 방법</h2>
       <ol class="rules">
         <li><b>뽑기</b>(100골드)로 노멀 햄스터를 뽑아요. 직업은 8가지 중 무작위예요.</li>
-        <li>같은 직업, 같은 등급 <b>2마리</b>를 합성하면 한 등급 위 햄스터 1마리가 돼요. 직업은 합친 직업을 뺀 나머지 7가지 중에서 무작위로 정해져요. 노멀에서 레전더리까지 6단계예요.</li>
+        <li>같은 직업, 같은 등급 <b>2마리</b>를 합성하면 한 등급 위 햄스터 1마리가 돼요. 직업은 합친 직업을 포함한 8가지 전부 중에서 무작위로 정해져요. 노멀에서 레전더리까지 6단계예요.</li>
         <li>같은 등급이면 직업이 달라도 3마리를 <b>랜덤 합성</b>할 수 있어요. 직업은 8가지 중 무작위이고, 10% 확률로 두 등급이 올라요.</li>
         <li>골드는 몬스터를 잡아서가 아니라 <b>웨이브의 몬스터를 모두 정리한 순간</b> 정해진 만큼 들어와요. 그래서 다음 웨이브가 오기 전에 뽑기와 합성을 할 수 있어요. 시작 골드는 600, 웨이브당 골드는 200이 기본이고 방 설정에서 바꿀 수 있어요.</li>
         <li>다음 웨이브 타이머는 <b>이전 웨이브의 몬스터가 모두 사라진 뒤</b>에야 흐르기 시작해요. 대기 시간은 화면에 보이는 초 기준이라 배속과 상관없이 같아요.</li>
@@ -425,7 +431,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
         <div class="trow"><button class="btn small" id="t-next" type="button">다음 웨이브 바로 시작</button><button class="btn small" id="t-kill" type="button">몬스터 제거</button><button class="btn small" id="t-life" type="button">목숨 회복</button><button class="btn small" id="t-gem1" type="button">보석 +10</button><button class="btn small" id="t-gem2" type="button">보석 +100</button><button class="btn small" id="t-upmax" type="button">강화 모두 최대</button><button class="btn small" id="t-upreset" type="button">강화 초기화</button></div>
       </div>
       <div class="watch" id="watch" hidden>
-        <h3><span id="watch-name"></span><button class="btn ghost small" id="watch-x" type="button">닫기</button></h3>
+        <h3><span id="watch-name"></span><span class="trow"><button class="btn ghost small" id="watch-big" type="button">크게 보기</button><button class="btn ghost small" id="watch-x" type="button">닫기</button></span></h3>
         <canvas id="cv2" aria-label="다른 참가자의 판"></canvas>
         <div class="muted" id="watch-info"></div>
       </div>
@@ -434,7 +440,9 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
         <p>길을 따라 몰려오는 몬스터를 햄스터로 막아내는 랜덤 타워 디펜스예요. 총 60스테이지이고, 목숨(50)이 0이 되면 탈락, 60스테이지를 클리어하면 승리해요. 10·20·30·40·50·60스테이지에는 보스가 나와요. 몬스터를 놓치면 목숨이 줄고, 보스를 놓치면 10이나 줄어요.</p>
         <h4>🐹 뽑기와 합성</h4>
         <p>뽑기(100골드)로 8가지 직업(검사·궁수·마법사·도적·거너·무도가·연금술사·창병) 중 하나가 무작위로 나와요. 등급은 노멀 → 커먼 → 레어 → 에픽 → 유니크 → 레전더리 순이에요.</p>
-        <p>같은 직업·같은 등급 2마리를 합치면 한 등급 위, 다른 직업으로 바뀌어요. 같은 등급 3마리를 랜덤 합성하면 한 등급 위(가끔 두 등급 위)의 무작위 직업이 돼요. 금색 ▲는 같은 직업 합성이 가능하다는 표시예요. 유니크는 확실히 좋은 능력, 레전더리는 아주 화려한 특별 능력이 있어요.</p>
+        <p>같은 직업·같은 등급 2마리를 합치면 한 등급 위, 8가지 직업 중 무작위 직업(같은 직업도 가능)으로 바뀌어요. 같은 등급 3마리를 랜덤 합성하면 한 등급 위(가끔 두 등급 위)의 무작위 직업이 돼요. 금색 ▲는 같은 직업 합성이 가능하다는 표시예요. 유니크는 확실히 좋은 능력, 레전더리는 아주 화려한 특별 능력이 있어요.</p>
+        <h4>🛠️ 직업별 특징</h4>
+        <p>검사: 보호막이 있는 몬스터에게 추가 피해(등급이 오를수록 커져요). 창병: 맞은 몬스터에게 '취약' 디버프를 걸어 잠깐 동안 받는 피해를 늘려요. 무도가: 등급이 오를수록 기절 확률과 시간이 늘어요. 연금술사: 등급이 오를수록 독이 세지고 몬스터를 더 느리게 해요. 거너: 사거리가 맵 전체이고 체력이 가장 높은 적(보스)을 노려요. 햄스터를 선택하면 그 등급의 효과 수치가 나와요.</p>
         <h4>👾 몬스터</h4>
         <p>스테이지마다 몬스터가 한 종류씩 나와요. 10스테이지부터는 분열·재생·빠름·장갑·보호막·회피·분노·무리·튼튼함 같은 특성이 붙어요. 오른쪽 몬스터 정보창에서 체력과 특성을 볼 수 있어요. 골드는 웨이브의 몬스터를 모두 없앴을 때 받고, 다음 웨이브는 그때부터 대기 시간이 지나야 시작해요.</p>
         <h4>💎 보석과 직업 강화</h4>
@@ -443,11 +451,13 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
         <p>미션 창에는 세 종류가 있어요. 조합 미션은 정해진 직업·등급의 햄스터를 판에 모으면 완성(재료는 사라지지 않아서 여러 미션을 함께 깰 수 있어요), 누적 미션은 처치 수·뽑기·합성·강화·무누수 연속 방어 기록을 채우면 완성, 자리 미션은 들어온 순서(1~10번, 9번은 1번·10번은 2번 미션)에 따라 내 자리의 직업을 등급별로 모으는 미션이에요. 완료한 미션은 완료 탭에서 볼 수 있어요.</p>
         <p>보상은 골드·보석·선택시민이에요. 선택시민은 원하는 직업을 골라 그 등급으로 바로 얻는 권리이고, 상단의 선택시민 버튼으로 고를 수 있어요.</p>
         <h4>👑 보스 보상</h4>
-        <p>보스를 처치하면 선택시민을 받아요. 10스테이지 보스는 커먼, 20은 레어, 30은 에픽, 40은 유니크, 50은 레전더리예요. 60스테이지 보스에는 보상이 없어요. 보스를 놓치면 받을 수 없어요. 미뤄 둔 선택시민은 등급별로 골라서 받을 수 있어요.</p>
+        <p>보스를 처치하면 선택시민을 받아요. 10스테이지 보스는 커먼, 20은 레어, 30은 에픽, 40은 유니크, 50은 레전더리예요. 60스테이지 보스에는 보상이 없고, 마지막 보스를 놓치면 목숨이 남아 있어도 바로 패배해요. 보스를 놓치면 받을 수 없어요. 미뤄 둔 선택시민은 등급별로 골라서 받을 수 있어요.</p>
         <h4>👹 특수보스</h4>
-        <p>판 아래의 특수보스 버튼으로 도전 보스를 불러낼 수 있어요. 1단계는 처치하면 100골드, 2단계는 300골드, 3단계는 500골드를 줘요. 처음 한 번은 바로 부를 수 있고, 부른 뒤에는 5분(게임 시간) 동안 다시 부를 수 없어요. 특수보스가 필드에 있는 동안은 다음 스테이지 타이머가 흐르지 않고, 놓쳐도 목숨은 줄지 않아요. 특수보스는 지금 스테이지에 맞춰 체력이 정해져요.</p>
+        <p>판 아래의 특수보스 버튼으로 도전 보스를 불러낼 수 있어요. 1단계는 처치하면 100골드, 2단계는 300골드, 3단계는 500골드를 줘요. 처음 한 번은 바로 부를 수 있고, 부른 뒤에는 5분(게임 시간) 동안 그 단계를 다시 부를 수 없어요. 쿨타임은 1·2·3단계가 각자 따로 돌아요. 특수보스가 필드에 있는 동안은 다음 스테이지 타이머가 흐르지 않고, 놓쳐도 목숨은 줄지 않아요. 특수보스는 지금 스테이지에 맞춰 체력이 정해져요.</p>
+        <h4>☠️ 마지막 보스</h4>
+        <p>60스테이지 마지막 보스는 목숨이 얼마나 남았든 놓치면 바로 패배예요. 반드시 처치해야 승리해요.</p>
         <h4>📊 기록 보기</h4>
-        <p>딜량 버튼: 직전에 클리어한 스테이지에서 햄스터별 피해량과 처치 수를 보여줘요. 점수판/유저화면확인 버튼: 순위를 보고, 순위에서 다른 참가자를 누르면 그 사람의 판을 작은 화면으로 볼 수 있어요.</p>
+        <p>딜량 버튼: 직전에 클리어한 스테이지에서 햄스터별 피해량과 처치 수를 보여줘요. 점수판/유저화면확인 버튼: 순위를 보고, 순위에서 다른 참가자를 누르면 그 사람의 판을 작은 화면으로 볼 수 있고, 크게 보기 버튼으로 큰 화면으로도 볼 수 있어요.</p>
         <h4>🎮 모드와 난이도</h4>
         <p>혼자 하기, 테스트 모드(원하는 햄스터 설치·골드·보석 무제한), 멀티(방 코드로 최대 10명, 방장이 속도·난이도·골드·대기 시간·몬스터 체력 배율을 정해요)가 있어요. 난이도는 쉬움 · 보통 · 어려움이고, 어려움은 한 직업에 보석을 크게 몰아야 겨우 깰 정도로 어려워요.</p>
         <h4>🔢 보유 현황</h4>
@@ -512,14 +522,14 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   })();
 
   const JOBS = [
-    { key: 'sword', color: '#ff6b5e', ch: '검', name: '검사', rng: 170, spd: 1.2, dmg: 12, desc: '가까운 적 3마리를 한꺼번에 벤다' },
+    { key: 'sword', color: '#ff6b5e', ch: '검', name: '검사', rng: 170, spd: 1.2, dmg: 12, desc: '가까운 적 3마리를 한꺼번에 벤다. 보호막이 있는 적에게는 추가 피해를 준다 (등급이 오를수록 커져요)' },
     { key: 'archer', color: '#5fd068', ch: '궁', name: '궁수', rng: 360, spd: 1.5, dmg: 11, desc: '멀리서 가장 앞선 적을 쏜다' },
     { key: 'mage', color: '#6f8cff', ch: '마', name: '마법사', rng: 300, spd: 0.9, dmg: 16, desc: '맞은 자리 주변까지 폭발한다' },
     { key: 'rogue', color: '#b57cff', ch: '도', name: '도적', rng: 220, spd: 3.2, dmg: 4.5, desc: '아주 빠르고 가끔 치명타를 낸다' },
-    { key: 'gunner', color: '#ffa63c', ch: '거', name: '거너', rng: 480, spd: 0.55, dmg: 30, desc: '체력이 가장 높은 적을 노린다' },
-    { key: 'monk', color: '#ff86bd', ch: '무', name: '무도가', rng: 170, spd: 1.8, dmg: 9, desc: '가끔 적을 기절시킨다' },
-    { key: 'alch', color: '#3fdcc0', ch: '연', name: '연금술사', rng: 250, spd: 1.1, dmg: 6, desc: '독으로 지속 피해를 주고 느리게 한다' },
-    { key: 'lancer', color: '#e6dc44', ch: '창', name: '창병', rng: 270, spd: 1.1, dmg: 10, desc: '일직선에 있는 적을 모두 꿰뚫는다' },
+    { key: 'gunner', color: '#ffa63c', ch: '거', name: '거너', rng: 2600, spd: 0.55, dmg: 30, desc: '사거리가 맵 전체예요. 체력이 가장 높은 적(보스)을 노리는 보스 사냥꾼이에요' },
+    { key: 'monk', color: '#ff86bd', ch: '무', name: '무도가', rng: 170, spd: 1.8, dmg: 9, desc: '가끔 적을 기절시킨다 (등급이 오를수록 기절 확률과 시간이 늘어요)' },
+    { key: 'alch', color: '#3fdcc0', ch: '연', name: '연금술사', rng: 250, spd: 1.1, dmg: 6, desc: '독으로 지속 피해를 주고 느리게 한다 (등급이 오를수록 독이 세지고 더 느려져요)' },
+    { key: 'lancer', color: '#e6dc44', ch: '창', name: '창병', rng: 270, spd: 1.1, dmg: 10, desc: '일직선의 적을 꿰뚫고 "취약" 디버프를 걸어 받는 피해를 늘린다 (등급이 오를수록 커져요)' },
   ];
   const GRADES = [
     { key: 'normal', name: '노멀', color: '#9aa3b2', mult: 1 },
@@ -564,7 +574,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
 
   const CFG = {
     START_GOLD: 600, DRAW_COST: 100, LIVES: 50, WAIT: 10, SPAWN_GAP: 0.65, GOLD_STAGE: 200, SPEED: 130,
-    HP0: 150, HPG: 1.1, BOSS_MUL: 14, BOSS_LEAK: 10, SELL_BASE: 40, GEM_GOLD: 100,
+    HP0: 150, HPG: 1.1, BOSS_MUL: 14, BOSS_LEAK: 10, FINAL_MUL: 0.25, SELL_BASE: 40, GEM_GOLD: 100,
   };
   const DIFFS = [{ key: 'easy', name: '쉬움', mul: 0.7 }, { key: 'normal', name: '보통', mul: 1 }, { key: 'hard', name: '어려움', mul: 1.8 }];
 
@@ -572,7 +582,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   function stageHp(s, mul) {
     let hp = CFG.HP0 * Math.pow(CFG.HPG, s - 1) * mul;
     const id = stageMonster(s), tr = traitsOf(id, s);
-    if (BOSS_ID[s]) hp *= CFG.BOSS_MUL * (1 + s / 60);
+    if (BOSS_ID[s]) hp *= CFG.BOSS_MUL * (1 + s / 60) * (s === 60 ? CFG.FINAL_MUL : 1);
     else { if (tr.includes('tank')) hp *= 1.8; if (tr.includes('fast')) hp *= 0.7; if (tr.includes('swarm')) hp *= 0.55; }
     return hp;
   }
@@ -584,7 +594,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     const g = {
       t: 0, stage: 0, lives: CFG.LIVES, gold: Math.max(0, Math.round(opt.startGold == null ? CFG.START_GOLD : opt.startGold)), wait: Math.max(0.5, opt.delay == null ? CFG.WAIT : opt.delay), delay: Math.max(0.5, opt.delay == null ? CFG.WAIT : opt.delay), units: [], enemies: [], fx: [], queue: [], spawnQ: [], up: JOBS.map(() => ({ a: 0, b: 0, c: 0 })), gems: Math.max(0, Math.round(opt.gems || 0)), nid: 1, uid: 1,
       kills: 0, leaked: 0, over: false, won: false, hpMul: opt.hpMul || 1, stageGold: Math.max(0, Math.round(opt.gold == null ? CFG.GOLD_STAGE : opt.gold)), fxOn: !!opt.fx, rnd: rngMaker(opt.seed || (Math.random() * 1e9) | 0),
-      maxStage: 0, events: [], spReady: 0, spCount: 0, draws: 0, merges: 0, bossKills: 0, streak: 0, bestStreak: 0, stageLeak0: 0, mdone: {}, picks: [], seat: opt.seat || 1, stat: {}, lastStat: null, cur: null,
+      maxStage: 0, events: [], spReady: [0, 0, 0], spCount: 0, draws: 0, merges: 0, bossKills: 0, streak: 0, bestStreak: 0, stageLeak0: 0, mdone: {}, picks: [], seat: opt.seat || 1, stat: {}, lastStat: null, cur: null,
     };
     return g;
   }
@@ -613,11 +623,11 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   function removeUnit(g, u) { const i = g.units.indexOf(u); if (i >= 0) g.units.splice(i, 1); }
   function mergeSame(g, u) {
     if (!canSame(g, u)) return false;
-    // 같은 직업·같은 등급 2마리 -> 한 등급 위, 직업은 합친 직업을 뺀 7가지 중 무작위
+    // 같은 직업·같은 등급 2마리 -> 한 등급 위, 직업은 8가지 전부 중 무작위 (합친 직업도 다시 나올 수 있다)
     const o = g.units.find(x => x !== u && x.job === u.job && x.grade === u.grade);
     removeUnit(g, o);
-    let j = Math.floor(g.rnd() * (JOBS.length - 1)); if (j >= u.job) j++;
-    u.job = j; u.grade++; u.cd = 0.3; g.merges++; if (g.fxOn) g.fx.push({ t: 'merge', unit: u.id, age: 0, life: 0.7 }); return true;
+    u.job = Math.floor(g.rnd() * JOBS.length);
+     u.grade++; u.cd = 0.3; g.merges++; if (g.fxOn) g.fx.push({ t: 'merge', unit: u.id, age: 0, life: 0.7 }); return true;
   }
   function mergeRandom(g, u) {
     if (!canRandom(g, u)) return false;
@@ -743,7 +753,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     return { ok: true, unit: u };
   }
   // ---------- 특수보스 ----------
-  // 버튼으로 불러내는 도전 보스. 처음엔 쿨타임이 없고, 부른 뒤부터 5분(게임 시간) 동안은 다시 부를 수 없다.
+  // 버튼으로 불러내는 도전 보스. 처음엔 쿨타임이 없고, 부른 뒤부터 5분(게임 시간) 동안은 그 단계를 다시 부를 수 없다. 쿨타임은 단계마다 따로 돈다.
   // 처치하면 골드를 주고, 놓쳐도 목숨은 줄지 않는다. 필드에 있는 동안은 다음 스테이지 타이머가 흐르지 않는다.
   const SPECIAL = [
     { lv: 1, name: '1단계', gold: 100, mon: 29, hpx: 0.6, spd: 70 },
@@ -751,17 +761,17 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     { lv: 3, name: '3단계', gold: 500, mon: 60, hpx: 2.0, spd: 55 },
   ];
   const SP_CD = 300;
-  const spLeft = g => Math.max(0, g.spReady - g.t);
-  const spAlive = g => g.enemies.some(e => e.special && !e.dead);
+  const spLeft = (g, lv) => Math.max(0, g.spReady[lv - 1] - g.t);
+  const spAlive = (g, lv) => g.enemies.some(e => e.special && !e.dead && (lv == null || e.special === lv));
   const spHp = (g, lv) => CFG.HP0 * Math.pow(CFG.HPG, Math.max(1, g.stage) - 1) * g.hpMul * 20 * SPECIAL[lv - 1].hpx;
   function summonSpecial(g, lv) {
     const d = SPECIAL[lv - 1]; if (!d || g.over) return { ok: false, why: 'over' };
     if (g.stage < 1) return { ok: false, why: 'start' };
-    if (spLeft(g) > 0) return { ok: false, why: 'cd', left: spLeft(g) };
-    if (spAlive(g)) return { ok: false, why: 'alive' };
+    if (spLeft(g, lv) > 0) return { ok: false, why: 'cd', left: spLeft(g, lv) };
+    if (spAlive(g, lv)) return { ok: false, why: 'alive' };
     const hp = spHp(g, lv);
     g.enemies.push({ id: g.nid++, d: 0, x: PTS[0][0], y: PTS[0][1], hp, maxHp: hp, shield: 0, maxShield: 0, tr: [], baseSpd: d.spd, spd: d.spd, mon: d.mon, boss: true, special: lv, stage: g.stage, slowT: 0, slowF: 1, stunT: 0, poT: 0, poDps: 0, flash: 0, dead: false });
-    g.spReady = g.t + SP_CD; g.spCount++; g.events.push({ t: 'special', lv }); return { ok: true, lv };
+    g.spReady[lv - 1] = g.t + SP_CD; g.spCount++; g.events.push({ t: 'special', lv }); return { ok: true, lv };
   }
   function sellValue(u) { return CFG.SELL_BASE * Math.pow(2, u.grade); }
   function sell(g, u) { g.gold += sellValue(u); removeUnit(g, u); }
@@ -773,7 +783,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     { a: ['강화 화살촉', '공격력 +15%'], b: ['속사', '공격 속도 +10%', 5, 250], c: ['관통 사격', '추가로 뒤쪽 적 1마리를 60% 피해로 맞힌다', 2, 500] },
     { a: ['마력 증폭', '공격력 +15%'], b: ['광역 확대', '폭발 범위 +12%', 5, 300], c: ['연쇄 폭발', '12% 확률로 폭발이 한 번 더 일어난다', 4, 450] },
     { a: ['예리한 단검', '공격력 +15%'], b: ['급소 노리기', '치명타 확률 +5%', 5, 250], c: ['치명상', '치명타 피해 +0.4배', 4, 350] },
-    { a: ['강화 탄환', '공격력 +15%'], b: ['철갑탄', '1: 장갑 무시 · 2: 회피도 무시 · 3: 보호막도 무시 · 4~5: 피해 +20%씩', 3, 400], c: ['저격 조준', '사거리 +10%', 4, 300] },
+    { a: ['강화 탄환', '공격력 +15%'], b: ['철갑탄', '1: 장갑 무시 · 2: 회피도 무시 · 3: 보호막도 무시 · 4~5: 피해 +20%씩', 3, 400], c: ['저격 조준', '보스 몬스터에게 주는 피해 +12%', 4, 300] },
     { a: ['단련', '공격력 +15%'], b: ['기절 타격', '기절 확률 +4%', 5, 250], c: ['진동파', '때린 적 주변에도 피해 (범위와 피해가 점점 커진다)', 3, 500] },
     { a: ['농축 약품', '공격력 +15%'], b: ['맹독', '독 피해 +25%', 5, 250], c: ['산성 안개', '독이 주변 적에게 번진다 (범위가 점점 커진다)', 3, 500] },
     { a: ['날 선 창끝', '공격력 +15%'], b: ['넓은 창날', '꿰뚫는 폭 +10', 4, 300], c: ['긴 창대', '사거리 +10%', 4, 300] },
@@ -784,7 +794,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   const OVER_DMG = 0;
   const upBase = (job, k) => k === 'a' ? 250 : UPG[job][k][3];
   // 강화는 골드가 아니라 보석(💎)으로 한다. 보석은 골드로 살 수 있고(100골드 = 1개) 나중에 미션 보상으로도 얻는다.
-  const upCost = (job, k, lv) => Math.max(1, Math.round((k === 'a' ? 1 : UNIQ_COST) * upBase(job, k) * (lv < UP_MULT.length ? UP_MULT[lv] : UP_MULT[4] * Math.pow(1.3, lv - 4)) / 120));   // lv = 지금 단계 (0부터), 단위는 보석
+  const upCost = (job, k, lv) => Math.max(1, Math.round((k === 'a' ? 1 : UNIQ_COST) * upBase(job, k) * (lv < UP_MULT.length ? UP_MULT[lv] : UP_MULT[4] + 1.5 * (lv - 4)) / 120));   // lv = 지금 단계 (0부터), 단위는 보석
   const upOf = (g, job) => g.up[job];
   // 실제 효과에 쓰는 단계: 고유 효과는 상한 단계까지만, 넘친 단계는 공격력 보너스로 바뀐다
   function effUp(g, job) { const o = g.up[job], b = Math.min(o.b, upCap(job, 'b')), c = Math.min(o.c, upCap(job, 'c')); return { a: o.a, b, c, over: (o.b - b) + (o.c - c) }; }
@@ -804,31 +814,51 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   }
   function addGems(g, n) { g.gems += Math.max(0, Math.floor(n)); }   // 미션 보상 등으로 지급
   // 레전더리 전용 능력: 사거리와 공격 방식이 한 단계 달라진다
-  const LEG_RNG = [1.3, 1.15, 1.15, 1.2, 1.1, 1.3, 1.2, 1.4];
+  const LEG_RNG = [1.3, 1.15, 1.15, 1.2, 1, 1.3, 1.2, 1.4];
   const LEG_DESC = [
     '레전더리: 한 번에 6마리를 베고 사거리가 30% 늘어난다',
     '레전더리: 화살 3발이 서로 다른 적을 동시에 맞힌다 (사거리 +15%)',
     '레전더리: 폭발 범위가 크게 커지고 주변 적도 같은 피해를 입는다',
     '레전더리: 치명타 확률 45%, 치명타 피해 4배 (사거리 +20%)',
-    '레전더리: 관통탄이 일직선의 모든 적을 꿰뚫고 장갑과 회피를 무시한다',
+    '레전더리: 맵 전체를 꿰뚫는 관통탄이 일직선의 모든 적을 맞히고 장갑과 회피를 무시한다',
     '레전더리: 충격파가 주변 모든 적에게 피해를 주고 기절시킨다 (기절 확률 30%)',
     '레전더리: 독 폭발이 넓은 범위의 모든 적에게 독과 둔화를 건다',
     '레전더리: 앞뒤 양쪽으로 창이 뻗고 더 길고 넓게 꿰뚫는다 (사거리 +40%)',
   ];
   // 유니크 전용 능력 (레전더리보다 약하지만 확실히 좋아진다)
-  const UNI_RNG = [1.15, 1.08, 1.1, 1.1, 1.05, 1.15, 1.1, 1.2];
+  const UNI_RNG = [1.15, 1.08, 1.1, 1.1, 1, 1.15, 1.1, 1.2];
   const UNI_DESC = [
     '유니크: 한 번에 4마리를 벤다 (사거리 +15%)',
     '유니크: 화살 2발이 서로 다른 적을 맞힌다 (사거리 +8%)',
     '유니크: 폭발 범위와 주변 피해가 커진다',
     '유니크: 치명타 확률 32%, 치명타 피해 3.2배 (사거리 +10%)',
-    '유니크: 장갑과 회피를 무시하는 탄환 (사거리 +5%)',
+    '유니크: 장갑과 회피를 무시하는 탄환',
     '유니크: 충격파가 주변 적에게도 피해를 준다 (기절 확률 20%)',
     '유니크: 독이 주변 적에게도 번진다 (독 피해 +25%)',
     '유니크: 창이 더 넓게 꿰뚫는다 (사거리 +20%)',
   ];
+  // 등급(0~5)마다 좋아지는 디버프·특수 효과 표
+  const SWORD_SHIELD = [0.2, 0.3, 0.45, 0.65, 0.9, 1.3];          // 검사: 보호막 있는 적에게 추가 피해
+  const LANCER_VULN = [0.06, 0.09, 0.12, 0.16, 0.21, 0.28];       // 창병: 취약 (받는 피해 증가)
+  const VULN_T = 3;
+  const MONK_STUN = [0.08, 0.11, 0.14, 0.18, 0.24, 0.32];         // 무도가: 기절 확률
+  const MONK_STUN_T = [0.6, 0.7, 0.8, 0.9, 1.0, 1.1], MONK_STUN_B = [0.25, 0.3, 0.35, 0.4, 0.55, 0.8];  // 일반 / 보스 기절 시간
+  const ALCH_POI = [0.85, 0.95, 1.05, 1.15, 1.35, 1.6];           // 연금술사: 독 피해 배율
+  const ALCH_SLOW = [0.8, 0.75, 0.7, 0.65, 0.58, 0.5];            // 연금술사: 이동 속도 배율 (작을수록 느림)
+  const pct = v => Math.round(v * 100) + '%';
+  function debuffText(u) {
+    const g = u.grade;
+    switch (JOBS[u.job].key) {
+      case 'sword': return '보호막 있는 적에게 피해 +' + pct(SWORD_SHIELD[g]);
+      case 'lancer': return '취약: 맞은 적이 ' + VULN_T + '초간 받는 피해 +' + pct(LANCER_VULN[g]);
+      case 'monk': return '기절 확률 ' + pct(MONK_STUN[g]) + ' · 기절 ' + MONK_STUN_T[g] + '초 (보스 ' + MONK_STUN_B[g] + '초)';
+      case 'alch': return '독 피해 x' + ALCH_POI[g] + ' · 이동 속도 ' + pct(ALCH_SLOW[g]) + '로 감소';
+      case 'gunner': return '사거리 맵 전체 · 보스에게 주는 피해 강화(저격 조준)';
+      default: return '';
+    }
+  }
   const tierOf = u => u.grade === 5 ? 2 : u.grade === 4 ? 1 : 0;
-  const unitRange = (u, g) => JOBS[u.job].rng * (u.grade === 5 ? LEG_RNG[u.job] : u.grade === 4 ? UNI_RNG[u.job] : 1) * (g && (u.job === 4 || u.job === 7) ? 1 + 0.1 * effUp(g, u.job).c : 1);
+  const unitRange = (u, g) => JOBS[u.job].rng * (u.grade === 5 ? LEG_RNG[u.job] : u.grade === 4 ? UNI_RNG[u.job] : 1) * (g && u.job === 7 ? 1 + 0.1 * effUp(g, u.job).c : 1);
   function unitDmg(u, g) { return JOBS[u.job].dmg * GRADES[u.grade].mult * (g ? (1 + 0.15 * g.up[u.job].a) * (u.job === 4 ? 1 + 0.2 * Math.max(0, g.up[4].b - 3) : 1) : 1); }
   function unitDps(u, g) { return unitDmg(u, g) * JOBS[u.job].spd * (g && u.job === 1 ? 1 + 0.1 * effUp(g, 1).b : 1); }
 
@@ -851,6 +881,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     const pf = pierce === true ? 7 : (pierce | 0);
     if (!(pf & 2) && e.tr.includes('ghost') && g.rnd() < 0.25) { e.dodge = 0.3; return; }
     if (!(pf & 1) && e.tr.includes('armor')) { const A = 6 + 1.6 * e.stage; dmg = Math.max(dmg * 0.25, dmg - A); }
+    if (e.vulnT > 0) dmg *= 1 + e.vulnV;
     e.flash = 0.08;
     const cs = g.cur;
     if (e.shield > 0 && !(pf & 4)) { const t = Math.min(e.shield, dmg); e.shield -= t; dmg -= t; if (cs) cs.dmg += t; if (dmg <= 0) return; }
@@ -884,12 +915,13 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       if (e.dead) continue;
       if (e.poT > 0) { e.poT -= dt; g.cur = e.poSrc || null; damage(g, e, e.poDps * dt, true); g.cur = null; if (e.dead) continue; }
       if (e.dodge > 0) e.dodge -= dt;
+      if (e.vulnT > 0) e.vulnT -= dt;
       if (e.tr.includes('regen') && e.poT <= 0 && e.hp < e.maxHp) e.hp = Math.min(e.maxHp, e.hp + e.maxHp * 0.025 * dt);
       const rage = e.tr.includes('rage') && e.hp <= e.maxHp * 0.5 ? 1.6 : 1;
       if (e.stunT > 0) e.stunT -= dt;
       else { if (e.slowT > 0) e.slowT -= dt; e.d += e.spd * rage * (e.slowT > 0 ? e.slowF : 1) * dt; }
       if (e.flash > 0) e.flash -= dt;
-      if (e.d >= L) { e.dead = true; e.leak = true; if (e.special) { g.events.push({ t: 'spleak', lv: e.special }); continue; } g.leaked++; g.lives -= e.boss ? CFG.BOSS_LEAK : 1; g.events.push({ t: 'leak', boss: e.boss }); continue; }
+      if (e.d >= L) { e.dead = true; e.leak = true; if (e.special) { g.events.push({ t: 'spleak', lv: e.special }); continue; } g.leaked++; g.lives -= e.boss ? CFG.BOSS_LEAK : 1; if (e.boss && e.stage === 60) { g.lives = 0; g.loseWhy = 'finalboss'; } g.events.push({ t: 'leak', boss: e.boss }); continue; }
       const p = posAt(e.d); e.x = p[0]; e.y = p[1];
     }
     // 공격
@@ -913,7 +945,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       switch (J.key) {
         case 'sword': {
           const cand = inR().sort((a, b) => b.d - a.d).slice(0, [3, 4, 6][tier] + UP.b);
-          cand.forEach(e => { sh.hits.push([e.x, e.y]); damage(g, e, e.hp <= e.maxHp * 0.3 ? dm * (1 + 0.25 * UP.c) : dm); }); break;
+          cand.forEach(e => { sh.hits.push([e.x, e.y]); damage(g, e, (e.hp <= e.maxHp * 0.3 ? dm * (1 + 0.25 * UP.c) : dm) * (e.shield > 0 ? 1 + SWORD_SHIELD[u.grade] : 1)); }); break;
         }
         case 'archer': {
           const cand = inR().sort((a, b) => b.d - a.d), n = tier ? tier + 1 : 1;
@@ -931,23 +963,24 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
         case 'rogue': { const cr = g.rnd() < [0.2, 0.32, 0.45][tier] + 0.05 * UP.b; sh.crit = cr; damage(g, tgt, cr ? dm * ([2.5, 3.2, 4][tier] + 0.4 * UP.c) : dm); break; }
         case 'gunner': {
           const pf = (tier === 1 ? 3 : 0) | [0, 1, 3, 7][Math.min(UP.b, 3)];
-          if (!lg) { damage(g, tgt, dm, pf); break; }
+          const bm = e => e.boss ? 1 + 0.12 * UP.c : 1;
+          if (!lg) { damage(g, tgt, dm * bm(tgt), pf); break; }
           const vx = tgt.x - ux, vy = tgt.y - uy, vl = Math.hypot(vx, vy) || 1, nx = vx / vl, ny = vy / vl;
           for (const e of en) {
             if (e.dead) continue; const ex = e.x - ux, ey = e.y - uy, along = ex * nx + ey * ny; if (along < 0 || along > RG) continue;
-            if (Math.abs(ex * ny - ey * nx) <= 30) { sh.hits.push([e.x, e.y]); damage(g, e, dm, true); }
+            if (Math.abs(ex * ny - ey * nx) <= 30) { sh.hits.push([e.x, e.y]); damage(g, e, dm * bm(e), true); }
           } break;
         }
         case 'monk': {
-          const stunP = [0.12, 0.2, 0.3][tier] + 0.04 * UP.b, mr = Math.max([0, 60, 95][tier], UP.c ? 40 + 15 * UP.c : 0), sm = Math.max(lg ? 0.6 : tier ? 0.4 : 0, UP.c ? 0.3 + 0.1 * UP.c : 0);
+          const stunP = MONK_STUN[u.grade] + 0.04 * UP.b, mr = Math.max([0, 60, 95][tier], UP.c ? 40 + 15 * UP.c : 0), sm = Math.max(lg ? 0.6 : tier ? 0.4 : 0, UP.c ? 0.3 + 0.1 * UP.c : 0);
           sh.stun = g.rnd() < stunP; sh.r = mr;
-          damage(g, tgt, dm); if (sh.stun) tgt.stunT = Math.max(tgt.stunT, tgt.boss ? (lg ? 0.8 : 0.4) : 0.9);
-          if (sm) for (const e of en) if (e !== tgt && !e.dead && (e.x - tgt.x) ** 2 + (e.y - tgt.y) ** 2 <= mr * mr) { damage(g, e, dm * sm); if (sh.stun && lg) e.stunT = Math.max(e.stunT, e.boss ? 0.8 : 0.9); }
+          damage(g, tgt, dm); if (sh.stun) tgt.stunT = Math.max(tgt.stunT, tgt.boss ? MONK_STUN_B[u.grade] : MONK_STUN_T[u.grade]);
+          if (sm) for (const e of en) if (e !== tgt && !e.dead && (e.x - tgt.x) ** 2 + (e.y - tgt.y) ** 2 <= mr * mr) { damage(g, e, dm * sm); if (sh.stun && lg) e.stunT = Math.max(e.stunT, e.boss ? MONK_STUN_B[5] : MONK_STUN_T[5]); }
           break;
         }
         case 'alch': {
           const rad = Math.max([0, 60, 100][tier], UP.c ? 40 + 20 * UP.c : 0); sh.r = rad;
-          const poison = e => { e.poSrc = g.cur; e.poDps = Math.max(e.poDps * (e.poT > 0 ? 1 : 0), dm * [1.0, 1.25, 1.5][tier] * (1 + 0.25 * UP.b)); e.poT = lg ? 3 : 2.5; e.slowT = 2; e.slowF = e.boss ? 0.8 : 0.65; };
+          const poison = e => { e.poSrc = g.cur; e.poDps = Math.max(e.poDps * (e.poT > 0 ? 1 : 0), dm * ALCH_POI[u.grade] * (1 + 0.25 * UP.b)); e.poT = lg ? 3 : 2.5; e.slowT = 2; e.slowF = Math.min(0.92, ALCH_SLOW[u.grade] + (e.boss ? 0.15 : 0)); };
           damage(g, tgt, dm); poison(tgt);
           if (rad) for (const e of en) if (e !== tgt && !e.dead && (e.x - tgt.x) ** 2 + (e.y - tgt.y) ** 2 <= rad * rad) { if (lg) damage(g, e, dm); poison(e); }
           break;
@@ -957,7 +990,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
           sh.back = lg;
           for (const e of en) {
             if (e.dead) continue; const ex = e.x - ux, ey = e.y - uy, along = ex * nx + ey * ny; if (along > RG || along < (lg ? -RG : 0)) continue;
-            if (Math.abs(ex * ny - ey * nx) <= wd) { sh.hits.push([e.x, e.y]); damage(g, e, dm); }
+            if (Math.abs(ex * ny - ey * nx) <= wd) { sh.hits.push([e.x, e.y]); damage(g, e, dm); if (!e.dead) { e.vulnV = Math.max(e.vulnT > 0 ? e.vulnV : 0, LANCER_VULN[u.grade]); e.vulnT = VULN_T; } }
           } break;
         }
         default: damage(g, tgt, dm);
@@ -974,7 +1007,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     if (g.lives <= 0) { g.lives = 0; g.over = true; g.won = false; g.events.push({ t: 'dead' }); }
     else if (g.stage >= 60 && !g.queue.length && !g.enemies.length) { g.over = true; g.won = true; g.events.push({ t: 'win' }); }
   }
-  root.TD = { SPECIAL, SP_CD, spLeft, spAlive, summonSpecial, BOSS_PICK, seatKey, GEM_ODDS, MISSIONS, missionsFor, missionInfo, claimMission, claimPick, effUp, upCap, OVER_DMG, buyGems, addGems, UPG, upMax, upCost, buyUpgrade, unitRange, LEG_DESC, UNI_DESC, TRAIT_INFO, traitsOf, monSpeed, isBossMon: id => BOSS_SET.has(id), W, H, L, PTS, PORTAL_RED: M.PORTAL_RED, PORTAL_BLUE: M.PORTAL_BLUE, posAt, NSLOT, slotXY, slotSize, NEAR, SLOTS: SL, JOBS, GRADES, MON_NAMES, BOSS_ID, CFG, DIFFS, stageMonster, stageCount, stageHp,
+  root.TD = { debuffText, SPECIAL, SP_CD, spLeft, spAlive, summonSpecial, BOSS_PICK, seatKey, GEM_ODDS, MISSIONS, missionsFor, missionInfo, claimMission, claimPick, effUp, upCap, OVER_DMG, buyGems, addGems, UPG, upMax, upCost, buyUpgrade, unitRange, LEG_DESC, UNI_DESC, TRAIT_INFO, traitsOf, monSpeed, isBossMon: id => BOSS_SET.has(id), W, H, L, PTS, PORTAL_RED: M.PORTAL_RED, PORTAL_BLUE: M.PORTAL_BLUE, posAt, NSLOT, slotXY, slotSize, NEAR, SLOTS: SL, JOBS, GRADES, MON_NAMES, BOSS_ID, CFG, DIFFS, stageMonster, stageCount, stageHp,
     create, draw, canSame, canRandom, mergeSame, mergeRandom, mergeAll, sell, sellValue, unitDmg, unitDps, step, slotUnit, freeSlots, countSame, countGrade };
 })(typeof window !== 'undefined' ? window : globalThis);
 
@@ -1469,7 +1502,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     portalGlow(now);
     const sameCnt = {}; g.units.forEach(u => { const k = u.job * 10 + u.grade; sameCnt[k] = (sameCnt[k] || 0) + 1; });
     const hov = S.hover, sel = S.sel ? g.units.find(u => u.id === S.sel) : null;
-    const drawRange = u => { const [cx, cy] = T.slotXY(u.slot); ctx.beginPath(); ctx.arc(cx, cy, T.unitRange(u, g), 0, 6.2832); ctx.fillStyle = 'rgba(255,194,71,.13)'; ctx.fill(); ctx.setLineDash([12, 10]); ctx.strokeStyle = 'rgba(255,230,140,.95)'; ctx.lineWidth = 3; ctx.stroke(); ctx.setLineDash([]); };
+    const drawRange = u => { const [cx, cy] = T.slotXY(u.slot); if (T.unitRange(u, g) > 1500) { ctx.fillStyle = 'rgba(255,194,71,.07)'; ctx.fillRect(0, 0, T.W, T.H); ctx.setLineDash([12, 10]); ctx.strokeStyle = 'rgba(255,230,140,.8)'; ctx.lineWidth = 6; ctx.strokeRect(3, 3, T.W - 6, T.H - 6); ctx.setLineDash([]); return; } ctx.beginPath(); ctx.arc(cx, cy, T.unitRange(u, g), 0, 6.2832); ctx.fillStyle = 'rgba(255,194,71,.13)'; ctx.fill(); ctx.setLineDash([12, 10]); ctx.strokeStyle = 'rgba(255,230,140,.95)'; ctx.lineWidth = 3; ctx.stroke(); ctx.setLineDash([]); };
     if (sel) drawRange(sel); else if (hov >= 0) { const hu = T.slotUnit(g, hov); if (hu) drawRange(hu); }
     const slotBox = (i, col, lw) => { const [cx, cy] = T.slotXY(i), [cw, ch] = T.slotSize(i); rr(ctx, cx - cw / 2 + 3, cy - ch / 2 + 3, cw - 6, ch - 6, 9); ctx.strokeStyle = col; ctx.lineWidth = lw; ctx.stroke(); };
     if (sel) slotBox(sel.slot, '#ffc247', 5);
@@ -1539,6 +1572,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     if (e.maxShield > 0) { ctx.fillStyle = '#4aa8ff'; ctx.fillRect(x - bw / 2, by + 8, bw * Math.max(0, e.shield / e.maxShield), 4); }
     if (e.special) { ctx.font = "400 14px 'Jua', sans-serif"; ctx.textAlign = 'center'; ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(30,10,0,.9)'; ctx.fillStyle = '#ffd24a'; ctx.strokeText('특수보스 ' + e.special + '단계', x, by - 8); ctx.fillText('특수보스 ' + e.special + '단계', x, by - 8); }
     if (e.tr.length && !e.small) { ctx.font = '12px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.fillText(e.tr.map(t => T.TRAIT_INFO[t].icon).join(''), x, by - 5); }
+    if (e.vulnT > 0) { ctx.fillStyle = '#c58cff'; ctx.beginPath(); ctx.arc(x - bw / 2 - 9, by + 3, 5, 0, 6.2832); ctx.fill(); }
     if (e.dodge > 0) { ctx.fillStyle = '#d8e8ff'; ctx.font = "400 16px 'Jua', sans-serif"; ctx.textAlign = 'center'; ctx.fillText('MISS', x, by - 18 - (0.3 - e.dodge) * 30); }
     if (e.stunT > 0) { ctx.fillStyle = '#ffe27a'; ctx.font = "400 22px 'Jua', sans-serif"; ctx.textAlign = 'center'; ctx.fillText('★', x, by - 5); }
     else if (e.poT > 0) { ctx.fillStyle = '#7ee0a0'; ctx.beginPath(); ctx.arc(x + bw / 2 + 9, by + 3, 5, 0, 6.2832); ctx.fill(); }
@@ -1820,8 +1854,9 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     const img = document.createElement('img'); img.alt = ''; img.src = 'ham/' + u.job + u.grade + '.webp'; el.appendChild(img);
     const info = document.createElement('div'); info.className = 'info';
     const h = document.createElement('h3'); h.textContent = J.name + ' · ' + G.name; h.style.color = G.color; info.appendChild(h);
-    const a = document.createElement('div'); a.className = 'num'; a.textContent = '공격력 ' + fmt(T.unitDmg(u, S.g)) + ' · 초당 ' + fmt(T.unitDps(u, S.g)) + ' · 사거리 ' + Math.round(T.unitRange(u, S.g)); info.appendChild(a);
+    const a = document.createElement('div'); a.className = 'num'; a.textContent = '공격력 ' + fmt(T.unitDmg(u, S.g)) + ' · 초당 ' + fmt(T.unitDps(u, S.g)) + ' · 사거리 ' + (T.unitRange(u, S.g) > 1500 ? '맵 전체' : Math.round(T.unitRange(u, S.g))); info.appendChild(a);
     const d = document.createElement('div'); d.className = 'muted'; d.textContent = J.desc; info.appendChild(d);
+    const dbt = T.debuffText(u); if (dbt) { const e2 = document.createElement('div'); e2.className = 'debuff'; e2.textContent = '이 등급 효과: ' + dbt; info.appendChild(e2); }
     if (u.grade >= 4) { const lg = document.createElement('div'); lg.className = 'legdesc' + (u.grade === 4 ? ' uni' : ''); lg.textContent = (u.grade === 5 ? T.LEG_DESC : T.UNI_DESC)[u.job]; info.appendChild(lg); } el.appendChild(info);
     const btns = document.createElement('div'); btns.className = 'btns';
     const mk = (txt, dis, fn, cls) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'btn small ' + (cls || ''); b.textContent = txt; b.disabled = dis; b.addEventListener('click', fn); btns.appendChild(b); };
@@ -1865,8 +1900,9 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   // ---------- 메인 루프 ----------
   // ---------- 다른 사람 화면 (작은 창) ----------
   const cv2 = $('cv2'), ctx2 = cv2.getContext('2d');
+  $('watch-big').addEventListener('click', () => { const w = $('watch'); w.classList.toggle('wbig'); $('watch-big').textContent = w.classList.contains('wbig') ? '작게 보기' : '크게 보기'; showWatch(); });
   function showWatch() {
-    $('watch').hidden = !S.watch; if (!S.watch) return;
+    $('watch').hidden = !S.watch; if (!S.watch) { $('watch').classList.remove('wbig'); $('watch-big').textContent = '크게 보기'; return; }
     const w = cv2.getBoundingClientRect().width || 300, dpr = Math.min(2, window.devicePixelRatio || 1);
     cv2.width = Math.round(w * dpr); cv2.height = Math.round(w * dpr * T.H / T.W); S.wLast = 0;
   }
@@ -1913,6 +1949,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       if (ev.t === 'stage' && T.BOSS_ID[ev.s]) HAudio.sys('boss');
       if (ev.t === 'special') { HAudio.sys('boss'); toast('👹 특수보스 ' + ev.lv + '단계 출현! 처치하면 ' + T.SPECIAL[ev.lv - 1].gold + '골드'); S.spKey = ''; }
       if (ev.t === 'spkill') { HAudio.sys('clear'); toast('특수보스 처치! +' + ev.gold + ' 골드'); S.spKey = ''; hud(true); }
+      if (ev.t === 'leak' && ev.boss && S.g.loseWhy === 'finalboss') toast('마지막 보스를 놓쳤어요!');
       if (ev.t === 'spleak') { HAudio.leak(false); toast('특수보스를 놓쳤어요 (목숨은 그대로예요)'); S.spKey = ''; }
       if (ev.t === 'bosspick') { HAudio.sys('clear'); toast('보스 처치! ' + ev.s + '스테이지 보상: ' + GN()[ev.grade] + ' 선택시민'); openM('m-pick'); }
       if (ev.t === 'clear') { if (S.refreshDmg) S.refreshDmg(); HAudio.sys('clear'); toast('웨이브 클리어! +' + ev.gold + ' 골드'); hud(true); }
@@ -1928,7 +1965,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     const h = document.createElement('h2'); h.className = g.won ? 'win' : 'lose'; h.textContent = g.won ? '60스테이지 돌파!' : '탈락했어요'; box.appendChild(h);
     const p = document.createElement('div'); p.className = 'muted num';
     const secs = Math.round(g.t / S.speed);
-    p.textContent = g.won ? '남은 목숨 ' + g.lives + ' · 처치 ' + g.kills + '마리 · 걸린 시간 ' + Math.floor(secs / 60) + '분 ' + (secs % 60) + '초' : g.maxStage + '스테이지에서 목숨이 모두 사라졌어요. 처치 ' + g.kills + '마리';
+    p.textContent = g.loseWhy === 'finalboss' ? '마지막 보스를 막지 못했어요. 처치 ' + g.kills + '마리' : g.won ? '남은 목숨 ' + g.lives + ' · 처치 ' + g.kills + '마리 · 걸린 시간 ' + Math.floor(secs / 60) + '분 ' + (secs % 60) + '초' : g.maxStage + '스테이지에서 목숨이 모두 사라졌어요. 처치 ' + g.kills + '마리';
     box.appendChild(p);
     const btns = document.createElement('div'); btns.className = 'btns';
     if (S.mode === 'room') { const b = document.createElement('button'); b.className = 'btn'; b.textContent = '순위 보기'; b.addEventListener('click', () => { $('over').hidden = true; }); btns.appendChild(b); }
@@ -2010,7 +2047,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       if (lv >= cap) { btn.textContent = '최대 단계'; btn.disabled = true; }
       else {
         const c = T.upCost(J, k, lv), armed = S.upArm && S.upArm.k === k && S.upArm.job === J;
-        btn.textContent = armed ? '한 번 더 누르면 확정 · 💎 ' + fmt(c) : '강화 ' + (lv + 1) + '단계 · 💎 ' + fmt(c); btn.disabled = g.gems < c; if (armed) btn.classList.add('primary');
+        btn.textContent = armed ? '한 번 더 누르면 확정 · 💎 ' + fmt(c) : '강화 ' + (lv + 1) + '단계 · 💎 ' + fmt(c); btn.disabled = g.gems < c; if (g.gems < c) btn.textContent = '강화 ' + (lv + 1) + '단계 · 💎 ' + fmt(c) + ' (보석 ' + fmt(c - g.gems) + '개 부족)'; if (armed) btn.classList.add('primary');
         btn.addEventListener('click', () => {
           if (g.over || S.paused) return;
           if (!(S.upArm && S.upArm.k === k && S.upArm.job === J)) { S.upArm = { job: J, k, until: performance.now() + 4000 }; S.upKey = ''; renderUpg(); return; }
@@ -2052,12 +2089,17 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   // ---------- 특수보스 ----------
   function fmtT(sec) { sec = Math.ceil(sec); return Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0'); }
   function renderSpecial() {
-    const g = S.g; if (!g) return; const left = T.spLeft(g), alive = T.spAlive(g), ready = left <= 0;
-    const key = [ready ? 0 : Math.ceil(left), alive ? 1 : 0, g.stage < 1 ? 0 : 1, g.over ? 1 : 0].join('|'); if (key === S.spKey) return; S.spKey = key;
-    const box = $('sp-btns'); if (!box.children.length) T.SPECIAL.forEach(d => { const b = document.createElement('button'); b.type = 'button'; b.className = 'btn small'; b.dataset.lv = d.lv; b.textContent = d.name + ' · +' + d.gold + '골드';
-      b.title = d.name + ' 특수보스: 처치하면 ' + d.gold + '골드'; b.addEventListener('click', () => { if (g.over || S.paused) return; const r = T.summonSpecial(S.g, d.lv); if (!r.ok) toast(r.why === 'cd' ? '쿨타임이 ' + fmtT(r.left) + ' 남았어요' : r.why === 'alive' ? '특수보스가 이미 필드에 있어요' : r.why === 'start' ? '첫 웨이브가 시작된 뒤에 부를 수 있어요' : '지금은 부를 수 없어요'); sync(); }); box.appendChild(b); });
-    [...box.children].forEach(b => { b.disabled = !ready || alive || g.stage < 1 || g.over; });
-    $('sp-cd').textContent = g.stage < 1 ? '첫 웨이브 이후 사용 가능' : alive ? '특수보스가 필드에 있어요 (다음 스테이지 타이머 정지)' : ready ? '지금 부를 수 있어요!' : '쿨타임 ' + fmtT(left);
+    const g = S.g; if (!g) return;
+    const st = T.SPECIAL.map(d => [Math.ceil(T.spLeft(g, d.lv)), T.spAlive(g, d.lv) ? 1 : 0].join(':'));
+    const key = [st.join('|'), g.stage < 1 ? 0 : 1, g.over ? 1 : 0].join('/'); if (key === S.spKey) return; S.spKey = key;
+    const box = $('sp-btns'); if (!box.children.length) T.SPECIAL.forEach(d => { const b = document.createElement('button'); b.type = 'button'; b.className = 'btn small'; b.dataset.lv = d.lv;
+      b.addEventListener('click', () => { if (g.over || S.paused) return; const r = T.summonSpecial(S.g, d.lv); if (!r.ok) toast(r.why === 'cd' ? d.name + ' 쿨타임이 ' + fmtT(r.left) + ' 남았어요' : r.why === 'alive' ? d.name + ' 특수보스가 이미 필드에 있어요' : r.why === 'start' ? '첫 웨이브가 시작된 뒤에 부를 수 있어요' : '지금은 부를 수 없어요'); sync(); }); box.appendChild(b); });
+    let any = false;
+    [...box.children].forEach((b, i) => { const d = T.SPECIAL[i], left = T.spLeft(g, d.lv), alive = T.spAlive(g, d.lv);
+      b.disabled = left > 0 || alive || g.stage < 1 || g.over; if (alive) any = true;
+      b.textContent = d.name + ' · +' + d.gold + '골드' + (alive ? ' · 출현 중' : left > 0 ? ' · ' + fmtT(left) : '');
+      b.title = d.name + ' 특수보스: 처치하면 ' + d.gold + '골드 (쿨타임은 단계마다 따로 5분)'; });
+    $('sp-cd').textContent = g.stage < 1 ? '첫 웨이브 이후 사용 가능' : any ? '특수보스가 필드에 있어요 (다음 스테이지 타이머 정지)' : '쿨타임은 단계마다 따로 5분';
   }
   // ---------- 보유 현황 ----------
   function renderCount() {
