@@ -226,6 +226,9 @@ input[type=text].goldin{width:92px;flex:none;text-align:center;font-weight:700;m
 
 .scol{display:grid;gap:10px;align-content:start;min-width:0}
 
+.tips h4{font-size:13px;color:var(--text,#fff);margin-top:4px}
+.tips p{line-height:1.55}
+
 </style>
 </head>
 <body>
@@ -322,7 +325,7 @@ input[type=text].goldin{width:92px;flex:none;text-align:center;font-weight:700;m
     <div class="sp"></div>
     <button class="btn small primary" id="b-pick" type="button" hidden>선택시민 0</button>
     <button class="btn ghost small" id="b-dmg" type="button">딜량</button>
-    <button class="btn ghost small" id="b-score" type="button">내 기록</button>
+    <button class="btn ghost small" id="b-score" type="button">점수판/유저화면확인</button>
     <button class="btn ghost small" id="b-pause" hidden>일시정지</button>
     <div class="sndwrap"><button class="btn ghost small" id="b-snd" type="button" aria-expanded="false">소리</button>
       <div class="sndpanel" id="sndpanel" hidden>
@@ -393,10 +396,24 @@ input[type=text].goldin{width:92px;flex:none;text-align:center;font-weight:700;m
         <div class="muted" id="watch-info"></div>
       </div>
       <div class="tips" id="tips" hidden>
-        <span>햄스터를 누르면 선택, 끌어서 놓으면 자리가 바뀌어요.</span>
-        <span>위의 내 기록 버튼에서 다른 참가자를 누르면 그 사람의 판을 작은 화면으로 볼 수 있어요.</span>
-        <span>금색 ▲ 표시는 지금 같은 직업 합성을 할 수 있다는 뜻이에요.</span>
-        <span>단축키 Q 뽑기 · E 10번 뽑기 · D 같은 직업 합성 · A 랜덤 합성 · W 판매 · S 한꺼번에 합성 · R 자동 합성 · P / 스페이스바 일시정지(혼자 하기) · Esc 선택 해제</span>
+        <h4>🎯 게임 목표</h4>
+        <p>길을 따라 몰려오는 몬스터를 햄스터로 막아내는 랜덤 타워 디펜스예요. 총 60스테이지이고, 목숨(50)이 0이 되면 탈락, 60스테이지를 클리어하면 승리해요. 10·20·30·40·50·60스테이지에는 보스가 나와요. 몬스터를 놓치면 목숨이 줄고, 보스를 놓치면 10이나 줄어요.</p>
+        <h4>🐹 뽑기와 합성</h4>
+        <p>뽑기(100골드)로 8가지 직업(검사·궁수·마법사·도적·거너·무도가·연금술사·창병) 중 하나가 무작위로 나와요. 등급은 노멀 → 커먼 → 레어 → 에픽 → 유니크 → 레전더리 순이에요.</p>
+        <p>같은 직업·같은 등급 2마리를 합치면 한 등급 위, 다른 직업으로 바뀌어요. 같은 등급 3마리를 랜덤 합성하면 한 등급 위(가끔 두 등급 위)의 무작위 직업이 돼요. 금색 ▲는 같은 직업 합성이 가능하다는 표시예요. 유니크는 확실히 좋은 능력, 레전더리는 아주 화려한 특별 능력이 있어요.</p>
+        <h4>👾 몬스터</h4>
+        <p>스테이지마다 몬스터가 한 종류씩 나와요. 10스테이지부터는 분열·재생·빠름·장갑·보호막·회피·분노·무리·튼튼함 같은 특성이 붙어요. 오른쪽 몬스터 정보창에서 체력과 특성을 볼 수 있어요. 골드는 웨이브의 몬스터를 모두 없앴을 때 받고, 다음 웨이브는 그때부터 대기 시간이 지나야 시작해요.</p>
+        <h4>💎 보석과 직업 강화</h4>
+        <p>100골드를 내면 보석을 1~3개 랜덤으로 얻어요(1개 75% · 2개 20% · 3개 5%). 직업 강화는 보석으로만 하고 한 번 올리면 되돌릴 수 없어요. 공격력 강화는 횟수 제한이 없고, 직업마다 있는 고유 강화 2가지는 각각 5단계까지예요. 강화는 그 직업의 햄스터 전부에게 적용돼요.</p>
+        <h4>📜 미션과 선택시민</h4>
+        <p>미션 창에는 세 종류가 있어요. 조합 미션은 정해진 직업·등급의 햄스터를 판에 모으면 완성(재료는 사라지지 않아서 여러 미션을 함께 깰 수 있어요), 누적 미션은 처치 수·뽑기·합성·강화·무누수 연속 방어 기록을 채우면 완성, 자리 미션은 들어온 순서(1~10번, 9번은 1번·10번은 2번 미션)에 따라 내 자리의 직업을 등급별로 모으는 미션이에요. 완료한 미션은 완료 탭에서 볼 수 있어요.</p>
+        <p>보상은 골드·보석·선택시민이에요. 선택시민은 원하는 직업을 골라 그 등급으로 바로 얻는 권리이고, 상단의 선택시민 버튼으로 고를 수 있어요.</p>
+        <h4>📊 기록 보기</h4>
+        <p>딜량 버튼: 직전에 클리어한 스테이지에서 햄스터별 피해량과 처치 수를 보여줘요. 점수판/유저화면확인 버튼: 순위를 보고, 순위에서 다른 참가자를 누르면 그 사람의 판을 작은 화면으로 볼 수 있어요.</p>
+        <h4>🎮 모드와 난이도</h4>
+        <p>혼자 하기, 테스트 모드(원하는 햄스터 설치·골드·보석 무제한), 멀티(방 코드로 최대 10명, 방장이 속도·난이도·골드·대기 시간·몬스터 체력 배율을 정해요)가 있어요. 난이도는 쉬움 · 보통 · 어려움이고, 어려움은 한 직업에 보석을 크게 몰아야 겨우 깰 정도로 어려워요.</p>
+        <h4>⌨️ 조작</h4>
+        <p>햄스터를 누르면 선택, 끌어서 놓으면 자리가 바뀌어요. 단축키: Q 뽑기 · E 10번 뽑기 · D 같은 직업 합성 · A 랜덤 합성 · W 판매 · S 한꺼번에 합성 · R 자동 합성 · P / 스페이스바 일시정지(혼자 하기) · Esc 선택 해제. 소리 버튼에서 효과음·배경음악을 종류별로 끌 수 있고, 단순하게 보기를 켜면 공격 효과가 간단해져요.</p>
       </div>
       </div>
     </div>
