@@ -277,7 +277,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   <div class="hero">
     <div class="parade" id="parade" aria-hidden="true"></div>
     <h1>햄스터 랜타디</h1>
-    <p>햄스터를 뽑고, 같은 햄스터끼리 합쳐서 60스테이지까지 버티는 랜덤 타워 디펜스예요. 방 코드를 공유해서 최대 10명이 각자 자기 판에서 겨룰 수 있어요.</p>
+    <p>햄스터를 뽑고, 같은 햄스터끼리 합쳐서 끝 스테이지까지 버티는 랜덤 타워 디펜스예요. 방 코드를 공유해서 최대 10명이 각자 자기 판에서 겨룰 수 있어요.</p>
     <div class="ladder" id="ladder"></div>
   </div>
   <div class="homegrid">
@@ -312,7 +312,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
         <li>골드는 몬스터를 잡아서가 아니라 <b>웨이브의 몬스터를 모두 정리한 순간</b> 정해진 만큼 들어와요. 그래서 다음 웨이브가 오기 전에 뽑기와 합성을 할 수 있어요. 시작 골드는 600, 웨이브당 골드는 200이 기본이고 방 설정에서 바꿀 수 있어요.</li>
         <li>다음 웨이브 타이머는 <b>이전 웨이브의 몬스터가 모두 사라진 뒤</b>에야 흐르기 시작해요. 대기 시간은 화면에 보이는 초 기준이라 배속과 상관없이 같아요.</li>
         <li>몬스터는 빨간 문에서 나와 지도의 모든 길을 지나 파란 문으로 나가요. 파란 문까지 가면 목숨이 줄어요. 보스는 10이고, 목숨은 50이에요.</li>
-        <li>10, 20, 30, 40, 50, 60스테이지마다 보스가 나와요. 60스테이지까지 막으면 승리예요. 승리자는 여러 명일 수 있어요.</li>
+        <li>10스테이지마다 보스가 나와요. 마지막 스테이지(기본 60, 나이트메어 70, 익스트림 80)까지 막으면 승리예요. 승리자는 여러 명일 수 있어요.</li>
         <li>몬스터마다 <b>특성</b>이 있어요 (질주, 거구, 보호막, 재생, 장갑, 회피, 분노, 분열, 무리). 위쪽 "이번 몬스터" 칸에서 확인하세요.</li>
         <li><b>직업 강화</b>: 골드로 직업마다 공격력과 고유 능력을 올릴 수 있어요. 그 직업의 모든 햄스터(앞으로 뽑을 햄스터 포함)에게 적용되고, 한 번 올리면 되돌릴 수 없어요.</li>
         <li><b>레전더리</b> 햄스터는 직업마다 전용 능력이 있어요. 사거리가 늘고 공격 방식이 강해져요.</li>
@@ -443,7 +443,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       </div>
       <div class="tips" id="tips" hidden>
         <h4>🎯 게임 목표</h4>
-        <p>길을 따라 몰려오는 몬스터를 햄스터로 막아내는 랜덤 타워 디펜스예요. 총 60스테이지이고, 목숨(50)이 0이 되면 탈락, 60스테이지를 클리어하면 승리해요. 10·20·30·40·50·60스테이지에는 보스가 나와요. 몬스터를 놓치면 목숨이 줄고, 보스를 놓치면 10이나 줄어요.</p>
+        <p>길을 따라 몰려오는 몬스터를 햄스터로 막아내는 랜덤 타워 디펜스예요. 총 60스테이지(나이트메어 70, 익스트림 80)이고, 목숨(50)이 0이 되면 탈락, 60스테이지를 클리어하면 승리해요. 10·20·30·40·50·60스테이지에는 보스가 나와요. 몬스터를 놓치면 목숨이 줄고, 보스를 놓치면 10이나 줄어요.</p>
         <h4>🐹 뽑기와 합성</h4>
         <p>뽑기(100골드)로 8가지 직업(검사·궁수·마법사·도적·거너·무도가·연금술사·창병) 중 하나가 무작위로 나와요. 등급은 노멀 → 커먼 → 레어 → 에픽 → 유니크 → 레전더리 순이에요.</p>
         <p>같은 직업·같은 등급 2마리를 합치면 한 등급 위, 8가지 직업 중 무작위 직업(같은 직업도 가능)으로 바뀌어요. 같은 등급 3마리를 랜덤 합성하면 한 등급 위(가끔 두 등급 위)의 무작위 직업이 돼요. 금색 ▲는 같은 직업 합성이 가능하다는 표시예요. 유니크는 확실히 좋은 능력, 레전더리는 아주 화려한 특별 능력이 있어요.</p>
@@ -463,11 +463,11 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
         <h4>👹 특수보스</h4>
         <p>판 아래의 특수보스 버튼으로 도전 보스를 불러낼 수 있어요. 처치하면 1단계 100, 2단계 300, 3단계 500, 4단계 800, 5단계 1200골드를 줘요. 처음 한 번은 바로 부를 수 있고, 부른 뒤에는 5분(게임 시간) 동안 그 단계를 다시 부를 수 없어요. 쿨타임은 단계마다 따로 돌아요. 특수보스가 필드에 있는 동안은 다음 스테이지 타이머가 흐르지 않고, 놓쳐도 목숨은 줄지 않아요. 특수보스 체력은 스테이지와 상관없이 단계마다 고정이에요: 1단계는 5~10스테이지, 2단계는 10~20, 3단계는 20~30, 4단계는 30~40, 5단계는 40~50스테이지에 맞춰 있어요. 마지막(60) 보스는 모든 보스 중에서 가장 단단해요.</p>
         <h4>☠️ 마지막 보스</h4>
-        <p>60스테이지 마지막 보스는 목숨이 얼마나 남았든 놓치면 바로 패배예요. 반드시 처치해야 승리해요.</p>
+        <p>마지막 스테이지의 보스는 목숨이 얼마나 남았든 놓치면 바로 패배예요. 반드시 처치해야 승리해요.</p>
         <h4>📊 기록 보기</h4>
         <p>딜량 버튼: 직전에 클리어한 스테이지에서 햄스터별 피해량과 처치 수를 보여줘요. 점수판/유저화면확인 버튼: 순위를 보고, 순위에서 다른 참가자를 누르면 그 사람의 판을 작은 화면으로 볼 수 있고, 크게 보기 버튼으로 큰 화면으로도 볼 수 있어요.</p>
         <h4>🎮 모드와 난이도</h4>
-        <p>혼자 하기, 테스트 모드(원하는 햄스터 설치·골드·보석 무제한), 멀티(방 코드로 최대 10명, 방장이 속도·난이도·골드·대기 시간·몬스터 체력 배율을 정해요)가 있어요. 난이도는 쉬움 · 보통 · 어려움이고, 어려움은 한 직업에 보석을 크게 몰아야 겨우 깰 정도로 어려워요.</p>
+        <p>혼자 하기, 테스트 모드(원하는 햄스터 설치·골드·보석 무제한), 멀티(방 코드로 최대 10명, 방장이 속도·난이도·골드·대기 시간·몬스터 체력 배율을 정해요)가 있어요. 난이도는 쉬움 · 보통 · 어려움 · 헬 · 나이트메어 · 익스트림 6단계예요. 난이도가 오르면 몬스터 체력이 늘어요. 나이트메어는 70스테이지, 익스트림은 80스테이지까지 가요(쉬움 ×0.7, 보통 ×1, 어려움 ×1.8, 헬 ×2.4, 나이트메어 ×2.8, 익스트림 ×3). 보스와 특수보스에도 똑같이 적용돼요. 어려움은 한 직업에 보석을 크게 몰아야 겨우 깰 정도이고, 헬 이상은 그보다 훨씬 어려워요.</p>
         <h4>🔢 보유 현황</h4>
         <p>오른쪽의 햄스터 보유 현황 표에서 직업별·등급별로 몇 마리가 있는지, 합계와 함께 볼 수 있어요.</p>
         <h4>🖥️ 큰 화면</h4>
@@ -557,6 +557,12 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   const BOSS_IDS = [9, 19, 27, 29, 55, 60];
   const ORDER = [];
   for (let i = 1; i <= 60; i++) if (!BOSS_IDS.includes(i)) ORDER.push(i);
+  // 스테이지 수는 난이도마다 다르다(60/70/80). 마지막 스테이지의 보스가 최종 보스(어둠의 드래곤).
+  let curMax = 60;
+  function setMax(n) {
+    curMax = n; BOSS_ID[60] = n === 60 ? 60 : 27; delete BOSS_ID[70]; delete BOSS_ID[80];
+    if (n >= 70) BOSS_ID[70] = n === 70 ? 60 : 55; if (n >= 80) BOSS_ID[80] = 60;
+  }
   // 몬스터 특성: fast 질주, tank 거구, shield 보호막, regen 재생, armor 장갑, ghost 회피, rage 분노, split 분열, swarm 무리
   const TRAIT_INFO = {
     fast: { name: '질주', icon: '⚡', desc: '아주 빠르게 달리지만 체력이 낮다' },
@@ -578,13 +584,13 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     51: ['swarm'], 52: ['split'], 53: ['armor'], 54: ['regen'], 55: ['regen', 'shield'], 56: ['armor', 'tank'], 57: ['shield'], 58: ['rage'], 59: ['fast', 'ghost'], 60: ['shield', 'rage'],
   };
   const traitsOf = (id, s) => (s != null && s <= 9) ? [] : (TRAITS[id] || []);
-  function stageMonster(s) { return BOSS_ID[s] || ORDER[s - 1 - Math.floor(s / 10)]; }
+  function stageMonster(s) { if (BOSS_ID[s]) return BOSS_ID[s]; const i = s - 1 - Math.floor(s / 10); return ORDER[i < ORDER.length ? i : 34 + (i - ORDER.length) % 20]; }
 
   const CFG = {
     START_GOLD: 600, DRAW_COST: 100, LIVES: 50, WAIT: 10, SPAWN_GAP: 0.65, GOLD_STAGE: 200, SPEED: 130,
     HP0: 150, HPG: 1.1, BOSS_MUL: 14, BOSS_LEAK: 10, FINAL_MUL: 0.34, BOSS_NERF: 0.65, SELL_BASE: 40, GEM_GOLD: 100,
   };
-  const DIFFS = [{ key: 'easy', name: '쉬움', mul: 0.7 }, { key: 'normal', name: '보통', mul: 1 }, { key: 'hard', name: '어려움', mul: 1.8 }];
+  const DIFFS = [{ key: 'easy', name: '쉬움', mul: 0.7 }, { key: 'normal', name: '보통', mul: 1 }, { key: 'hard', name: '어려움', mul: 1.8 }, { key: 'hell', name: '헬', mul: 2.4 }, { key: 'mare', name: '나이트메어', mul: 2.8, stages: 70 }, { key: 'extreme', name: '익스트림', mul: 3, stages: 80 }].map(d => Object.assign({ stages: 60 }, d));
 
   function stageCount(s) { if (BOSS_ID[s]) return 1; const n = s <= 30 ? 20 : 24; return traitsOf(stageMonster(s), s).includes('swarm') ? Math.round(n * 1.7) : n; }
   // 기절이 풀린 직후 0.5초 동안은 다시 기절하지 않는다 (이미 기절 중이면 더 긴 쪽으로 갱신)
@@ -592,7 +598,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   function stageHp(s, mul) {
     let hp = CFG.HP0 * Math.pow(CFG.HPG, s - 1) * mul;
     const id = stageMonster(s), tr = traitsOf(id, s);
-    if (BOSS_ID[s]) hp *= CFG.BOSS_MUL * (1 + s / 60) * (s === 60 ? CFG.FINAL_MUL : CFG.BOSS_NERF);
+    if (BOSS_ID[s]) hp *= CFG.BOSS_MUL * (1 + s / 60) * (s === curMax ? CFG.FINAL_MUL : CFG.BOSS_NERF);
     else { if (tr.includes('tank')) hp *= 1.8; if (tr.includes('fast')) hp *= 0.7; if (tr.includes('swarm')) hp *= 0.55; }
     return hp;
   }
@@ -600,9 +606,9 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   function rngMaker(seed) { let a = seed >>> 0; return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
 
   function create(opt) {
-    opt = opt || {};
+    opt = opt || {}; const maxS = [60, 70, 80].includes(opt.stages) ? opt.stages : 60; setMax(maxS);
     const g = {
-      t: 0, stage: 0, lives: CFG.LIVES, gold: Math.max(0, Math.round(opt.startGold == null ? CFG.START_GOLD : opt.startGold)), wait: Math.max(0.5, opt.delay == null ? CFG.WAIT : opt.delay), delay: Math.max(0.5, opt.delay == null ? CFG.WAIT : opt.delay), units: [], enemies: [], fx: [], queue: [], spawnQ: [], up: JOBS.map(() => ({ a: 0, b: 0, c: 0 })), gems: Math.max(0, Math.round(opt.gems || 0)), nid: 1, uid: 1,
+      t: 0, stage: 0, maxS, lives: CFG.LIVES, gold: Math.max(0, Math.round(opt.startGold == null ? CFG.START_GOLD : opt.startGold)), wait: Math.max(0.5, opt.delay == null ? CFG.WAIT : opt.delay), delay: Math.max(0.5, opt.delay == null ? CFG.WAIT : opt.delay), units: [], enemies: [], fx: [], queue: [], spawnQ: [], up: JOBS.map(() => ({ a: 0, b: 0, c: 0 })), gems: Math.max(0, Math.round(opt.gems || 0)), nid: 1, uid: 1,
       kills: 0, leaked: 0, over: false, won: false, hpMul: opt.hpMul || 1, stageGold: Math.max(0, Math.round(opt.gold == null ? CFG.GOLD_STAGE : opt.gold)), fxOn: !!opt.fx, rnd: rngMaker(opt.seed || (Math.random() * 1e9) | 0),
       maxStage: 0, events: [], spReady: [0, 0, 0, 0, 0], spCount: 0, draws: 0, merges: 0, bossKills: 0, streak: 0, bestStreak: 0, stageLeak0: 0, mdone: {}, picks: [], seat: opt.seat || 1, stat: {}, lastStat: null, cur: null,
     };
@@ -914,7 +920,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     g.t += dt;
     // 스테이지 시작
     // 이전 웨이브 몬스터가 모두 사라진 뒤에만 다음 웨이브 타이머가 흐른다 (첫 웨이브도 같은 타이머)
-    if (g.stage < 60 && !g.queue.length && !g.enemies.some(e => !e.dead)) {
+    if (g.stage < g.maxS && !g.queue.length && !g.enemies.some(e => !e.dead)) {
       g.wait -= dt;
       if (g.wait <= 0) { startStage(g, g.stage + 1); g.wait = g.delay; }
     }
@@ -934,7 +940,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       if (e.stunImm > 0) e.stunImm -= dt; if (e.stunT > 0) { e.stunT -= dt; if (e.stunT <= 0) { e.stunT = 0; e.stunImm = 0.5; } }
       else { if (e.slowT > 0) e.slowT -= dt; e.d += e.spd * rage * (e.slowT > 0 ? e.slowF : 1) * dt; }
       if (e.flash > 0) e.flash -= dt;
-      if (e.d >= L) { e.dead = true; e.leak = true; if (e.special) { g.events.push({ t: 'spleak', lv: e.special }); continue; } g.leaked++; g.lives -= e.boss ? CFG.BOSS_LEAK : 1; if (e.boss && e.stage === 60) { g.lives = 0; g.loseWhy = 'finalboss'; } g.events.push({ t: 'leak', boss: e.boss }); continue; }
+      if (e.d >= L) { e.dead = true; e.leak = true; if (e.special) { g.events.push({ t: 'spleak', lv: e.special }); continue; } g.leaked++; g.lives -= e.boss ? CFG.BOSS_LEAK : 1; if (e.boss && e.stage === g.maxS) { g.lives = 0; g.loseWhy = 'finalboss'; } g.events.push({ t: 'leak', boss: e.boss }); continue; }
       const p = posAt(e.d); e.x = p[0]; e.y = p[1];
     }
     // 공격
@@ -1018,7 +1024,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     if (g.fxOn) { for (const f of g.fx) f.age += dt; g.fx = g.fx.filter(f => f.age < f.life); }
     // 종료 판정
     if (g.lives <= 0) { g.lives = 0; g.over = true; g.won = false; g.events.push({ t: 'dead' }); }
-    else if (g.stage >= 60 && !g.queue.length && !g.enemies.length) { g.over = true; g.won = true; g.events.push({ t: 'win' }); }
+    else if (g.stage >= g.maxS && !g.queue.length && !g.enemies.length) { g.over = true; g.won = true; g.events.push({ t: 'win' }); }
   }
   root.TD = { debuffText, SPECIAL, SP_CD, spLeft, spAlive, summonSpecial, BOSS_PICK, seatKey, GEM_ODDS, MISSIONS, missionsFor, missionInfo, claimMission, claimPick, effUp, upCap, OVER_DMG, buyGems, addGems, UPG, upMax, upCost, buyUpgrade, unitRange, LEG_DESC, UNI_DESC, TRAIT_INFO, traitsOf, monSpeed, isBossMon: id => BOSS_SET.has(id), W, H, L, PTS, PORTAL_RED: M.PORTAL_RED, PORTAL_BLUE: M.PORTAL_BLUE, posAt, NSLOT, slotXY, slotSize, NEAR, SLOTS: SL, JOBS, GRADES, MON_NAMES, BOSS_ID, CFG, DIFFS, stageMonster, stageCount, stageHp,
     create, draw, canSame, canRandom, mergeSame, mergeRandom, mergeAll, sell, sellValue, unitDmg, unitDps, step, slotUnit, freeSlots, countSame, countGrade };
@@ -1370,7 +1376,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     if (!S.room) return [];
     return S.room.peers().filter(p => p.kind === 'viewer' && p.presence && p.presence.n && !(p.isMe && !p.sameTab)).map(p => {
       const q = p.presence;
-      return { peer: p.peer, me: p.isMe, n: String(q.n).slice(0, 10), h: q.h === 1, ph: String(q.ph || 'lobby'), st: Math.max(0, Math.min(60, +q.st || 0)), lv: Math.max(0, Math.min(50, isNaN(+q.lv) ? 50 : +q.lv)), sp: +q.sp, df: +q.df, gp: q.gp, g0: q.g0, tm: q.tm, hm: q.hm, u: typeof q.u === 'string' ? q.u : '', e: typeof q.e === 'string' ? q.e : '', gd: +q.gd || 0, sn: Math.max(0, Math.min(10, +q.sn || 0)), at: p.updatedAt };
+      return { peer: p.peer, me: p.isMe, n: String(q.n).slice(0, 10), h: q.h === 1, ph: String(q.ph || 'lobby'), st: Math.max(0, Math.min(80, +q.st || 0)), lv: Math.max(0, Math.min(50, isNaN(+q.lv) ? 50 : +q.lv)), sp: +q.sp, df: +q.df, gp: q.gp, g0: q.g0, tm: q.tm, hm: q.hm, u: typeof q.u === 'string' ? q.u : '', e: typeof q.e === 'string' ? q.e : '', gd: +q.gd || 0, sn: Math.max(0, Math.min(10, +q.sn || 0)), at: p.updatedAt };
     });
   }
   function netErr(e, dflt) { const t = e && (e.type || e.message); if (t === 'peer-unavailable') return '그 코드의 방을 찾지 못했어요. 코드를 다시 확인해 주세요.'; if (t === 'full') return '방이 가득 찼어요.'; if (t === 'broker') return '연결 중개 서버에 접속하지 못했어요. 인터넷·VPN·방화벽(회사/학교망)을 확인하고 다시 시도해 주세요. (' + (e.message || '') + ')'; if (t === 'p2p') return '방장과 직접 연결하지 못했어요. 통신사·공유기 설정 때문일 수 있어요. 와이파이↔LTE 바꾸기, VPN 끄기, WebRTC 차단 확장 끄기, 크롬으로 접속해 보세요. (' + (e.message || '') + ')'; if (t === 'peerjs') return '멀티 연결 모듈을 불러오지 못했어요. 인터넷 연결을 확인해 주세요.'; return dflt; }
@@ -1470,7 +1476,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
 
   // ---------- 게임 시작 ----------
   function startGame(mode) {
-    S.mode = mode; S.g = T.create({ hpMul: T.DIFFS[S.diff].mul * S.hp / 100, gold: S.gold, startGold: S.start, delay: S.wait * S.speed, fx: true });
+    S.mode = mode; S.g = T.create({ stages: T.DIFFS[S.diff].stages, hpMul: T.DIFFS[S.diff].mul * S.hp / 100, gold: S.gold, startGold: S.start, delay: S.wait * S.speed, fx: true });
     S.vfx = []; S.watch = null; S.t0 = performance.now(); S.paused = false; S.sel = null; S.hover = -1; S.over = false; S.banner = null; S.lastKey = ''; S.lastPres = 0;
     S.cntKey = ''; S.spKey = ''; $('m-score').hidden = true; $('m-dmg').hidden = true; $('m-pick').hidden = true; S.msKey = ''; S.testSeat = 1; S.seatPick = 0; S.lockSeat = 0; { const ps0 = mode === 'room' ? players() : []; const me0 = ps0.find(p => p.me); if (me0) S.lockSeat = seatMap(ps0)[me0.peer]; const ss = $('seat-sel'); if (ss) { ss.value = '0'; ss.disabled = mode === 'room'; ss.title = mode === 'room' ? '멀티 게임 중에는 자리를 바꿀 수 없어요. 시작 전 대기실에서 골라요.' : ''; } } $('t-seat').textContent = '내 자리: 1번'; $('tips').hidden = true; $('b-help').setAttribute('aria-pressed', 'false'); $('h-diff').textContent = T.DIFFS[S.diff].name + (S.hp !== 100 ? ' · 체력 ' + S.hp + '%' : ''); $('over').hidden = true; $('b-pause').hidden = (mode !== 'solo' && mode !== 'test'); $('testbox').hidden = (mode !== 'test'); S.placeOn = false; renderTest(); S.miKey = ''; S.upKey = ''; S.upArm = null; S.upJob = 0; $('b-pause').textContent = '일시정지';
     $('h-speed').textContent = 'x' + S.speed; $('h-gp').textContent = '+' + S.gold;
@@ -1876,14 +1882,14 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   function hud(force) {
     const g = S.g; if (!g) return; const now = performance.now();
     if (!force && now - S.hudT < 150) return; S.hudT = now;
-    $('h-stage').textContent = g.maxStage + ' / 60';
+    $('h-stage').textContent = g.maxStage + ' / ' + g.maxS;
     $('h-lives').textContent = g.lives; $('h-gold').textContent = fmt(g.gold); $('h-gems').textContent = fmt(g.gems);
     let nl = '다음 웨이브', nv = '-';
     const alive = g.enemies.length + g.queue.length;
-    if (g.stage < 60 && !alive) { nl = g.stage === 0 ? '시작까지' : '다음 웨이브'; nv = Math.max(0, Math.ceil(g.wait / S.speed)) + '초'; }
+    if (g.stage < g.maxS && !alive) { nl = g.stage === 0 ? '시작까지' : '다음 웨이브'; nv = Math.max(0, Math.ceil(g.wait / S.speed)) + '초'; }
     else { nl = '남은 몬스터'; nv = alive; }
     $('h-next-l').textContent = nl; $('h-next').textContent = nv; renderMon(); renderUpg(); renderMiss(); renderPick(); renderCount(); renderSpecial();
-    const ms = alive || g.stage === 0 ? (alive ? g.stage : 1) : Math.min(60, g.stage + 1), mid = T.stageMonster(ms), mt = T.traitsOf(mid, ms);
+    const ms = alive || g.stage === 0 ? (alive ? g.stage : 1) : Math.min(g.maxS, g.stage + 1), mid = T.stageMonster(ms), mt = T.traitsOf(mid, ms);
     $('h-mon-l').textContent = alive ? '이번 몬스터' : '다음 몬스터';
     $('h-mon').textContent = T.MON_NAMES[mid] + (mt.length ? ' ' + mt.map(t => T.TRAIT_INFO[t].icon + T.TRAIT_INFO[t].name).join(' ') : '');
     const hasGold = g.gold >= T.CFG.DRAW_COST; $('b-draw').disabled = g.over || S.paused || !hasGold; $('b-draw10').disabled = g.over || S.paused || !hasGold;
@@ -1929,7 +1935,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       const d = document.createElement('div'); d.className = 'rk' + (r.ph === 'won' ? ' win' : '') + (r.ph === 'dead' ? ' dead' : '') + (r.me ? ' me' : '');
       const pos = document.createElement('div'); pos.className = 'pos'; pos.textContent = i + 1; d.appendChild(pos);
       const who = document.createElement('div'); who.className = 'who'; const b = document.createElement('b'); b.textContent = r.n + (r.me ? ' (나)' : ''); who.appendChild(b);
-      const bar = document.createElement('div'); bar.className = 'bar'; const fill = document.createElement('i'); fill.style.width = (r.st / 60 * 100) + '%'; bar.appendChild(fill); who.appendChild(bar); d.appendChild(who);
+      const bar = document.createElement('div'); bar.className = 'bar'; const fill = document.createElement('i'); fill.style.width = (r.st / T.DIFFS[S.diff].stages * 100) + '%'; bar.appendChild(fill); who.appendChild(bar); d.appendChild(who);
       const rt = document.createElement('div'); const st = document.createElement('div'); st.className = 'st num'; st.textContent = r.ph === 'won' ? '승리' : r.ph === 'dead' ? '탈락 · ' + r.st : r.st + ' / 60'; rt.appendChild(st);
       const lv = document.createElement('div'); lv.className = 'lv num'; lv.textContent = '♥ ' + r.lv; rt.appendChild(lv); d.appendChild(rt);
       if (r.peer && S.room && S.mode === 'room' && S.view === 'game') {
@@ -1971,7 +1977,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       const bw = boss ? 90 : 56; ctx2.fillStyle = 'rgba(10,14,28,.82)'; ctx2.fillRect(x - bw / 2 - 2, y - size / 2 - 12, bw + 4, 12); ctx2.fillStyle = m.hp > .5 ? '#6be08a' : m.hp > .25 ? '#ffd24a' : '#ff6b6b'; ctx2.fillRect(x - bw / 2, y - size / 2 - 10, bw * m.hp, 8);
     }
     $('watch-name').textContent = p.n + ' 님의 화면';
-    $('watch-info').textContent = (p.ph === 'won' ? '승리 · ' : p.ph === 'dead' ? '탈락 · ' : '') + p.st + ' / 60 스테이지 · 목숨 ' + p.lv + ' · 골드 ' + fmt(p.gd) + ' · 햄스터 ' + S.wc.units.length + '마리';
+    $('watch-info').textContent = (p.ph === 'won' ? '승리 · ' : p.ph === 'dead' ? '탈락 · ' : '') + p.st + ' / ' + T.DIFFS[S.diff].stages + ' 스테이지 · 목숨 ' + p.lv + ' · 골드 ' + fmt(p.gd) + ' · 햄스터 ' + S.wc.units.length + '마리';
   }
   function loop(now) {
     S.raf = requestAnimationFrame(loop);
@@ -2007,7 +2013,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   function finish() {
     const g = S.g; pushPres(true); HAudio.sys(g.won ? 'win' : 'lose');
     const box = $('over-box'); box.textContent = '';
-    const h = document.createElement('h2'); h.className = g.won ? 'win' : 'lose'; h.textContent = g.won ? '60스테이지 돌파!' : '탈락했어요'; box.appendChild(h);
+    const h = document.createElement('h2'); h.className = g.won ? 'win' : 'lose'; h.textContent = g.won ? g.maxS + '스테이지 돌파!' : '탈락했어요'; box.appendChild(h);
     const p = document.createElement('div'); p.className = 'muted num';
     const secs = Math.round(g.t / S.speed);
     p.textContent = g.loseWhy === 'finalboss' ? '마지막 보스를 막지 못했어요. 처치 ' + g.kills + '마리' : g.won ? '남은 목숨 ' + g.lives + ' · 처치 ' + g.kills + '마리 · 걸린 시간 ' + Math.floor(secs / 60) + '분 ' + (secs % 60) + '초' : g.maxStage + '스테이지에서 목숨이 모두 사라졌어요. 처치 ' + g.kills + '마리';
@@ -2060,7 +2066,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   const addGold = n => { if (!tReady()) return; S.g.gold = Math.min(99999999, S.g.gold + n); sync(); };
   $('t-addgold').addEventListener('click', () => addGold(tNum('t-gold', 10000, 0, 9999999)));
   $('t-g1').addEventListener('click', () => addGold(1000)); $('t-g2').addEventListener('click', () => addGold(100000));
-  $('t-go').addEventListener('click', () => { if (!tReady()) return; const g = S.g, n = tNum('t-stage', 1, 1, 60); if (g.over) return; g.enemies = []; g.queue = []; g.stage = n - 1; g.maxStage = n - 1; g.paid = true; g.wait = g.delay; toast(n + '스테이지부터 시작해요'); sync(); });
+  $('t-go').addEventListener('click', () => { if (!tReady()) return; const g = S.g, n = tNum('t-stage', 1, 1, S.g.maxS); if (g.over) return; g.enemies = []; g.queue = []; g.stage = n - 1; g.maxStage = n - 1; g.paid = true; g.wait = g.delay; toast(n + '스테이지부터 시작해요'); sync(); });
   $('t-next').addEventListener('click', () => { if (!tReady() || S.g.over) return; const g = S.g; if (!g.queue.length && !g.enemies.length) g.wait = 0.01; sync(); });
   $('t-kill').addEventListener('click', () => { if (!tReady()) return; const g = S.g; g.paid = true; g.queue = []; g.enemies.forEach(e => { e.dead = true; }); sync(); });
   $('t-life').addEventListener('click', () => { if (!tReady()) return; S.g.lives = T.CFG.LIVES; sync(); });
@@ -2174,7 +2180,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   function rwText(rw) { const a = []; if (rw.pick) { const c = {}; rw.pick.forEach(g => c[g] = (c[g] || 0) + 1); Object.keys(c).forEach(g => a.push(GN()[g] + ' 선택시민 ' + c[g] + '명')); } if (rw.gems) a.push('💎 ' + rw.gems); if (rw.gold) a.push(fmt(rw.gold) + ' 골드'); return a.join(' + '); }
   const STAT_DESC = {
     kills: n => '몬스터를 모두 합쳐 ' + n + '마리 처치하세요. (분열해서 생긴 작은 몬스터도 세요)',
-    bossKills: n => '보스 몬스터를 ' + n + '마리 처치하세요. (보스는 10·20·30·40·50·60스테이지에 나와요)',
+    bossKills: n => '보스 몬스터를 ' + n + '마리 처치하세요. (보스는 10스테이지마다 나와요)',
     draws: n => '뽑기를 ' + n + '번 하세요. (10번 뽑기는 10번으로 세요)',
     merges: n => '합성을 ' + n + '번 하세요. (같은 직업 합성, 랜덤 합성, 한꺼번에 합성 모두 포함)',
     upLv: n => '직업 강화를 모두 합쳐 ' + n + '단계 올리세요. (공격력·고유 강화 단계의 합계)',
@@ -2235,7 +2241,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   // ---------- 몬스터 정보 ----------
   function renderMon() {
     const g = S.g; if (!g) return;
-    const alive = g.enemies.length + g.queue.length, ms = alive ? g.stage : Math.min(60, g.stage + 1), id = T.stageMonster(ms), boss = !!T.BOSS_ID[ms], tr = T.traitsOf(id, ms);
+    const alive = g.enemies.length + g.queue.length, ms = alive ? g.stage : Math.min(g.maxS, g.stage + 1), id = T.stageMonster(ms), boss = !!T.BOSS_ID[ms], tr = T.traitsOf(id, ms);
     const mul = T.DIFFS[S.diff].mul * S.hp / 100, hp = T.stageHp(ms, mul), cnt = T.stageCount(ms), spd = T.monSpeed(id), sh = tr.includes('shield') ? hp * (boss ? .5 : .6) : 0;
     const key = ms + '|' + S.diff + '|' + S.hp + '|' + (alive ? 1 : 0);
     if (S.miKey !== key) {
@@ -2248,7 +2254,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       const ul = $('mi-traits'); ul.textContent = '';
       if (!tr.length) { const li = document.createElement('li'); li.className = 'muted'; li.textContent = '특별한 특성이 없어요'; ul.appendChild(li); }
       tr.forEach(t => { const li = document.createElement('li'); const b = document.createElement('b'); b.textContent = T.TRAIT_INFO[t].icon + ' ' + T.TRAIT_INFO[t].name; li.appendChild(b); li.appendChild(document.createTextNode(' ' + T.TRAIT_INFO[t].desc)); ul.appendChild(li); });
-      if (ms < 60) { const nid = T.stageMonster(ms + 1), nt = T.traitsOf(nid, ms + 1); $('mi-next').textContent = '그다음 ' + (ms + 1) + '스테이지: ' + T.MON_NAMES[nid] + (nt.length ? ' ' + nt.map(t => T.TRAIT_INFO[t].icon).join('') : ''); } else $('mi-next').textContent = '';
+      if (ms < g.maxS) { const nid = T.stageMonster(ms + 1), nt = T.traitsOf(nid, ms + 1); $('mi-next').textContent = '그다음 ' + (ms + 1) + '스테이지: ' + T.MON_NAMES[nid] + (nt.length ? ' ' + nt.map(t => T.TRAIT_INFO[t].icon).join('') : ''); } else $('mi-next').textContent = '';
     }
     let live = '';
     if (alive) { let lead = null, tot = 0; for (const e of g.enemies) { tot += e.hp + e.shield; if (!lead || e.d > lead.d) lead = e; } live = '남은 ' + alive + '마리' + (lead ? ' · 선두 체력 ' + fmt(lead.hp) + ' / ' + fmt(lead.maxHp) + (lead.maxShield ? ' (보호막 ' + fmt(lead.shield) + ')' : '') : '') + (tot ? ' · 남은 체력 합계 ' + fmt(tot) : ''); }
