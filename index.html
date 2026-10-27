@@ -369,7 +369,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
         <div class="over" id="m-score" hidden><div class="box wide"><div class="mhead"><b>기록</b><button class="btn ghost small" type="button" data-close="m-score">닫기</button></div>
       <div class="rank"><h3><span id="rank-title">순위</span><span class="muted" style="font-size:13px" id="rank-sub"></span></h3><div id="ranklist" style="display:grid;gap:6px"></div></div></div></div>
         <div class="over" id="m-dmg" hidden><div class="box wide"><div class="mhead"><b id="dmg-t">딜량</b><button class="btn ghost small" type="button" data-close="m-dmg">닫기</button></div><div id="dmg-body" class="dmgbody"></div></div></div>
-        <div class="over" id="m-pick" hidden><div class="box wide"><div class="mhead"><b id="pick-t">선택시민</b><button class="btn ghost small" type="button" data-close="m-pick">나중에</button></div><div class="muted" id="pick-sub"></div><div class="pickgrid" id="pick-grid"></div></div></div>
+        <div class="over" id="m-pick" hidden><div class="box wide"><div class="mhead"><b id="pick-t">선택시민</b><button class="btn ghost small" type="button" data-close="m-pick">나중에</button></div><div class="muted" id="pick-sub"></div><div id="pick-box"><div class="trow" id="pick-tabs"></div></div><div class="pickgrid" id="pick-grid"></div></div></div>
         <div class="over" id="over" hidden><div class="box" id="over-box"></div></div>
       </div>
       <div class="actions">
@@ -503,14 +503,14 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   })();
 
   const JOBS = [
-    { key: 'sword', name: '검사', rng: 170, spd: 1.2, dmg: 12, desc: '가까운 적 3마리를 한꺼번에 벤다' },
-    { key: 'archer', name: '궁수', rng: 360, spd: 1.5, dmg: 11, desc: '멀리서 가장 앞선 적을 쏜다' },
-    { key: 'mage', name: '마법사', rng: 300, spd: 0.9, dmg: 16, desc: '맞은 자리 주변까지 폭발한다' },
-    { key: 'rogue', name: '도적', rng: 220, spd: 3.2, dmg: 4.5, desc: '아주 빠르고 가끔 치명타를 낸다' },
-    { key: 'gunner', name: '거너', rng: 480, spd: 0.55, dmg: 30, desc: '체력이 가장 높은 적을 노린다' },
-    { key: 'monk', name: '무도가', rng: 170, spd: 1.8, dmg: 9, desc: '가끔 적을 기절시킨다' },
-    { key: 'alch', name: '연금술사', rng: 250, spd: 1.1, dmg: 6, desc: '독으로 지속 피해를 주고 느리게 한다' },
-    { key: 'lancer', name: '창병', rng: 270, spd: 1.1, dmg: 10, desc: '일직선에 있는 적을 모두 꿰뚫는다' },
+    { key: 'sword', color: '#ff6b5e', ch: '검', name: '검사', rng: 170, spd: 1.2, dmg: 12, desc: '가까운 적 3마리를 한꺼번에 벤다' },
+    { key: 'archer', color: '#5fd068', ch: '궁', name: '궁수', rng: 360, spd: 1.5, dmg: 11, desc: '멀리서 가장 앞선 적을 쏜다' },
+    { key: 'mage', color: '#6f8cff', ch: '마', name: '마법사', rng: 300, spd: 0.9, dmg: 16, desc: '맞은 자리 주변까지 폭발한다' },
+    { key: 'rogue', color: '#b57cff', ch: '도', name: '도적', rng: 220, spd: 3.2, dmg: 4.5, desc: '아주 빠르고 가끔 치명타를 낸다' },
+    { key: 'gunner', color: '#ffa63c', ch: '거', name: '거너', rng: 480, spd: 0.55, dmg: 30, desc: '체력이 가장 높은 적을 노린다' },
+    { key: 'monk', color: '#ff86bd', ch: '무', name: '무도가', rng: 170, spd: 1.8, dmg: 9, desc: '가끔 적을 기절시킨다' },
+    { key: 'alch', color: '#3fdcc0', ch: '연', name: '연금술사', rng: 250, spd: 1.1, dmg: 6, desc: '독으로 지속 피해를 주고 느리게 한다' },
+    { key: 'lancer', color: '#e6dc44', ch: '창', name: '창병', rng: 270, spd: 1.1, dmg: 10, desc: '일직선에 있는 적을 모두 꿰뚫는다' },
   ];
   const GRADES = [
     { key: 'normal', name: '노멀', color: '#9aa3b2', mult: 1 },
@@ -726,10 +726,11 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     g.events.push({ t: 'mission', id, name: m.name }); return { ok: true, rw };
   }
   // 선택시민: 대기 중인 첫 번째 선택권으로 원하는 직업을 그 등급으로 받는다
-  function claimPick(g, job) {
+  function claimPick(g, job, grade) {
     if (!g.picks.length || g.over) return { ok: false, why: 'none' };
     const sl = pickSlot(g); if (sl < 0) return { ok: false, why: 'full' };
-    const grade = g.picks.shift(), u = { id: g.uid++, job, grade, slot: sl, cd: 0.3, born: g.t }; g.units.push(u);
+    let i = grade == null ? 0 : g.picks.indexOf(grade); if (i < 0) return { ok: false, why: 'none' };
+    const gr = g.picks.splice(i, 1)[0], u = { id: g.uid++, job, grade: gr, slot: sl, cd: 0.3, born: g.t }; g.units.push(u);
     return { ok: true, unit: u };
   }
   function sellValue(u) { return CFG.SELL_BASE * Math.pow(2, u.grade); }
@@ -1475,10 +1476,18 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     const w = Math.min(cw * 1.36, 124) * sc, h = w * 150 / 260, cy = cy0 - 1 + bob;
     if (u.grade === 5) legendAura(cx, cy, t, w);
     else if (u.grade === 4) { ctx.save(); ctx.globalCompositeOperation = 'lighter'; const pl = (Math.sin(t * 2.4 + u.id) + 1) / 2, gu = ctx.createRadialGradient(cx, cy, 3, cx, cy, w * .55); gu.addColorStop(0, 'rgba(255,190,70,' + (.16 + .1 * pl) + ')'); gu.addColorStop(1, 'rgba(255,170,40,0)'); ctx.fillStyle = gu; ctx.beginPath(); ctx.arc(cx, cy, w * .55, 0, 6.2832); ctx.fill(); ctx.restore(); }
+    { const gc = T.GRADES[u.grade].color; ctx.save(); ctx.globalAlpha = .55; ctx.strokeStyle = gc; ctx.lineWidth = 4; ctx.beginPath(); ctx.ellipse(cx, cy0 + ch * .2, w * .34, w * .1, 0, 0, 6.2832); ctx.stroke(); ctx.globalAlpha = .16; ctx.fillStyle = gc; ctx.fill(); ctx.restore(); }
     if (ok(im)) ctx.drawImage(im, cx - w / 2, cy - h / 2, w, h); else { ctx.fillStyle = T.GRADES[u.grade].color; ctx.beginPath(); ctx.arc(cx, cy, 20, 0, 6.2832); ctx.fill(); }
-    const by = cy0 + ch / 2 - 12, bw = cw * 0.5;
-    rr(ctx, cx - bw / 2 - 2, by, bw + 4, 9, 4.5); ctx.fillStyle = 'rgba(10,14,28,.6)'; ctx.fill();
-    rr(ctx, cx - bw / 2, by + 2, Math.max(4, bw * (u.grade + 1) / 6), 5, 2.5); ctx.fillStyle = T.GRADES[u.grade].color; ctx.fill();
+    // 구분 표시: 등급 = 아래 이름표 + 발밑 고리(등급 색), 직업 = 왼쪽 위 동그라미(직업 색 + 글자)
+    const GR = T.GRADES[u.grade], JB = T.JOBS[u.job], by = cy0 + ch / 2 - 15;
+    ctx.save(); ctx.font = "400 13px 'Jua', 'Noto Sans KR', sans-serif"; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    const gw = ctx.measureText(GR.name).width + 14;
+    rr(ctx, cx - gw / 2, by, gw, 16, 8); ctx.fillStyle = GR.color; ctx.fill(); ctx.lineWidth = 1.5; ctx.strokeStyle = 'rgba(8,10,20,.85)'; ctx.stroke();
+    ctx.fillStyle = u.grade === 0 ? '#10131f' : '#fff'; ctx.lineWidth = 3; if (u.grade !== 0) { ctx.strokeStyle = 'rgba(8,10,20,.55)'; ctx.strokeText(GR.name, cx, by + 8.5); } ctx.fillText(GR.name, cx, by + 8.5);
+    const jx = cx - cw / 2 + 15, jy = cy0 - ch / 2 + 15;
+    ctx.beginPath(); ctx.arc(jx, jy, 12, 0, 6.2832); ctx.fillStyle = JB.color; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = 'rgba(8,10,20,.9)'; ctx.stroke();
+    ctx.font = "400 15px 'Jua', 'Noto Sans KR', sans-serif"; ctx.fillStyle = '#10131f'; ctx.fillText(JB.ch, jx, jy + 1);
+    ctx.restore();
     if (u.grade < 5 && (same[u.job * 10 + u.grade] || 0) >= 2) { ctx.fillStyle = '#ffc247'; ctx.font = "400 22px 'Jua', sans-serif"; ctx.textAlign = 'center'; ctx.strokeStyle = 'rgba(40,24,0,.8)'; ctx.lineWidth = 4; const my = cy0 - ch / 2 + 20 + Math.sin(t * 6) * 2; ctx.strokeText('▲', cx + cw * 0.34, my); ctx.fillText('▲', cx + cw * 0.34, my); }
   }
   function drawEnemy(e) {
@@ -2000,7 +2009,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       body.appendChild(el);
     });
   }
-  const openM = id => { $(id).hidden = false; if (id === 'm-dmg') renderDmg(); if (id === 'm-pick') { $('pick-grid').dataset.g = ''; renderPick(); } if (id === 'm-score') { $('ranklist').dataset.sig = ''; if (typeof renderRank === 'function') renderRank(); } };
+  const openM = id => { $(id).hidden = false; if (id === 'm-dmg') renderDmg(); if (id === 'm-pick') { $('pick-box').dataset.k = ''; renderPick(); } if (id === 'm-score') { $('ranklist').dataset.sig = ''; if (typeof renderRank === 'function') renderRank(); } };
   $('b-dmg').addEventListener('click', () => { const h = !$('m-dmg').hidden; $('m-dmg').hidden = true; if (!h) openM('m-dmg'); });
   $('b-score').addEventListener('click', () => { const h = !$('m-score').hidden; $('m-score').hidden = true; if (!h) openM('m-score'); });
   document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => { $(b.dataset.close).hidden = true; }));
@@ -2016,7 +2025,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     cell('', ''); T.GRADES.forEach(gr => cell('h', gr.name.slice(0, 2), gr.color)); cell('t', '합계');
     const colT = Array(6).fill(0);
     T.JOBS.forEach((j, i) => {
-      cell('jn', j.name); let rt = 0;
+      { const d = cell('jn', ''); const dot = document.createElement('i'); dot.style.cssText = 'display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;background:' + j.color; d.appendChild(dot); d.appendChild(document.createTextNode(j.name)); } let rt = 0;
       m[i].forEach((n, gi) => { rt += n; colT[gi] += n; const d = cell('n' + (n ? '' : ' z') + (n >= 2 && gi < 5 ? ' m' : ''), n); });
       cell('t', rt);
     });
@@ -2074,12 +2083,19 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     $('b-pick').hidden = !n; $('b-pick').textContent = '선택시민 ' + n;
     if ($('m-pick').hidden) return;
     if (!n) { $('m-pick').hidden = true; return; }
-    const gr = g.picks[0]; $('pick-t').textContent = GN()[gr] + ' 선택시민'; $('pick-sub').textContent = '원하는 직업을 고르면 ' + GN()[gr] + ' 등급으로 바로 나와요. 대기 ' + n + '명';
-    const grid = $('pick-grid'); if (grid.dataset.g === String(gr)) return; grid.dataset.g = gr; grid.textContent = '';
+    const cnt = {}; g.picks.forEach(x => { cnt[x] = (cnt[x] || 0) + 1; });
+    const grades = Object.keys(cnt).map(Number).sort((a, b) => a - b);
+    if (S.pickGrade == null || !cnt[S.pickGrade]) S.pickGrade = grades[0];
+    const gr = S.pickGrade; $('pick-t').textContent = '선택시민 고르기';
+    $('pick-sub').textContent = '받을 등급을 고른 뒤, 원하는 직업을 누르면 그 등급으로 바로 나와요. (대기 ' + n + '명)';
+    const key = grades.map(x => x + ':' + cnt[x]).join(',') + '|' + gr; const box = $('pick-box'); if (box.dataset.k === key) return; box.dataset.k = key;
+    const tabs = $('pick-tabs'); tabs.textContent = '';
+    grades.forEach(x => { const b = document.createElement('button'); b.type = 'button'; b.className = 'btn small'; b.setAttribute('aria-pressed', String(x === gr)); b.textContent = GN()[x] + ' × ' + cnt[x]; b.style.borderColor = T.GRADES[x].color; b.addEventListener('click', () => { S.pickGrade = x; renderPick(); }); tabs.appendChild(b); });
+    const grid = $('pick-grid'); grid.textContent = '';
     T.JOBS.forEach((j, i) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'btn small'; const im = document.createElement('img'); im.alt = ''; im.src = 'ham/' + i + gr + '.webp'; b.appendChild(im); const sp = document.createElement('span'); sp.textContent = j.name; b.appendChild(sp);
-      b.addEventListener('click', () => { if (g.over || S.paused) return; const r = T.claimPick(g, i); if (r.ok) { HAudio.sys('draw'); toast(j.name + ' ' + GN()[gr] + ' 등장!'); grid.dataset.g = ''; sync(); } else toast(r.why === 'full' ? '빈 자리가 없어요. 자리를 비운 뒤 다시 눌러 주세요' : '선택권이 없어요'); }); grid.appendChild(b); });
+      b.addEventListener('click', () => { if (g.over || S.paused) return; const r = T.claimPick(g, i, gr); if (r.ok) { HAudio.sys('draw'); toast(j.name + ' ' + GN()[gr] + ' 등장!'); box.dataset.k = ''; sync(); } else toast(r.why === 'full' ? '빈 자리가 없어요. 자리를 비운 뒤 다시 눌러 주세요' : '선택권이 없어요'); }); grid.appendChild(b); });
   }
-  $('b-pick').addEventListener('click', () => { $('m-pick').hidden = false; $('pick-grid').dataset.g = ''; renderPick(); });
+  $('b-pick').addEventListener('click', () => { $('m-pick').hidden = false; $('pick-box').dataset.k = ''; renderPick(); });
   $('t-seat').addEventListener('click', () => { S.testSeat = (S.testSeat || 1) % 10 + 1; $('t-seat').textContent = '내 자리: ' + S.testSeat + '번'; S.msKey = ''; renderMiss(); });
 
   // ---------- 몬스터 정보 ----------
