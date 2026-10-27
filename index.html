@@ -450,7 +450,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
         <h4>🪑 자리 이동</h4>
         <p>미션 창의 '자리 이동'에서 원하는 번호(1~10번)를 고르면 그 자리의 자리 미션으로 바뀌어요. 9번·10번은 1번·2번과 같은 미션이에요. '자동'은 방에 들어온 순서대로 정해져요.</p>
         <h4>🛠️ 직업별 특징</h4>
-        <p>검사: 보호막이 있는 몬스터에게 추가 피해(등급이 오를수록 커져요). 창병: 맞은 몬스터에게 '취약' 디버프를 걸어 잠깐 동안 받는 피해를 늘려요. 무도가: 등급이 오를수록 기절 확률과 시간이 늘어요. 연금술사: 등급이 오를수록 독이 세지고 몬스터를 더 느리게 해요. 거너: 사거리가 맵 전체이고 체력이 가장 높은 적(보스)을 노려요. 햄스터를 선택하면 그 등급의 효과 수치가 나와요.</p>
+        <p>검사: 보호막이 있는 몬스터에게 추가 피해(등급이 오를수록 커져요). 창병: 맞은 몬스터에게 '취약' 디버프를 걸어 잠깐 동안 받는 피해를 늘려요. 무도가: 등급이 오를수록 기절 확률과 시간이 늘어요. 이미 기절한 몬스터는 기절이 길어지지 않고, 기절이 풀린 뒤 0.5초 동안은 다시 기절하지 않아요. 기절이 풀린 몬스터는 0.5초 동안 다시 기절하지 않아요. 연금술사: 등급이 오를수록 독이 세지고 몬스터를 더 느리게 해요. 거너: 사거리가 맵 전체이고 체력이 가장 높은 적(보스)을 노려요. 햄스터를 선택하면 그 등급의 효과 수치가 나와요.</p>
         <h4>👾 몬스터</h4>
         <p>스테이지마다 몬스터가 한 종류씩 나와요. 10스테이지부터는 분열·재생·빠름·장갑·보호막·회피·분노·무리·튼튼함 같은 특성이 붙어요. 오른쪽 몬스터 정보창에서 체력과 특성을 볼 수 있어요. 골드는 웨이브의 몬스터를 모두 없앴을 때 받고, 다음 웨이브는 그때부터 대기 시간이 지나야 시작해요.</p>
         <h4>💎 보석과 직업 강화</h4>
@@ -461,7 +461,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
         <h4>👑 보스 보상</h4>
         <p>보스를 처치하면 선택시민을 받아요. 10스테이지 보스는 커먼, 20은 레어, 30은 에픽, 40은 유니크, 50은 레전더리예요. 60스테이지 보스에는 보상이 없고, 마지막 보스를 놓치면 목숨이 남아 있어도 바로 패배해요. 보스를 놓치면 받을 수 없어요. 미뤄 둔 선택시민은 등급별로 골라서 받을 수 있어요.</p>
         <h4>👹 특수보스</h4>
-        <p>판 아래의 특수보스 버튼으로 도전 보스를 불러낼 수 있어요. 1단계는 처치하면 100골드, 2단계는 300골드, 3단계는 500골드를 줘요. 처음 한 번은 바로 부를 수 있고, 부른 뒤에는 5분(게임 시간) 동안 그 단계를 다시 부를 수 없어요. 쿨타임은 1·2·3단계가 각자 따로 돌아요. 특수보스가 필드에 있는 동안은 다음 스테이지 타이머가 흐르지 않고, 놓쳐도 목숨은 줄지 않아요. 특수보스는 지금 스테이지에 맞춰 체력이 정해져요.</p>
+        <p>판 아래의 특수보스 버튼으로 도전 보스를 불러낼 수 있어요. 처치하면 1단계 100, 2단계 300, 3단계 500, 4단계 800, 5단계 1200골드를 줘요. 처음 한 번은 바로 부를 수 있고, 부른 뒤에는 5분(게임 시간) 동안 그 단계를 다시 부를 수 없어요. 쿨타임은 단계마다 따로 돌아요. 특수보스가 필드에 있는 동안은 다음 스테이지 타이머가 흐르지 않고, 놓쳐도 목숨은 줄지 않아요. 특수보스 체력은 스테이지와 상관없이 단계마다 고정이에요: 1단계는 5~10스테이지, 2단계는 10~20, 3단계는 20~30, 4단계는 30~40, 5단계는 40~50스테이지에 맞춰 있어요. 마지막(60) 보스는 모든 보스 중에서 가장 단단해요.</p>
         <h4>☠️ 마지막 보스</h4>
         <p>60스테이지 마지막 보스는 목숨이 얼마나 남았든 놓치면 바로 패배예요. 반드시 처치해야 승리해요.</p>
         <h4>📊 기록 보기</h4>
@@ -582,15 +582,17 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
 
   const CFG = {
     START_GOLD: 600, DRAW_COST: 100, LIVES: 50, WAIT: 10, SPAWN_GAP: 0.65, GOLD_STAGE: 200, SPEED: 130,
-    HP0: 150, HPG: 1.1, BOSS_MUL: 14, BOSS_LEAK: 10, FINAL_MUL: 0.33, SELL_BASE: 40, GEM_GOLD: 100,
+    HP0: 150, HPG: 1.1, BOSS_MUL: 14, BOSS_LEAK: 10, FINAL_MUL: 0.34, BOSS_NERF: 0.65, SELL_BASE: 40, GEM_GOLD: 100,
   };
   const DIFFS = [{ key: 'easy', name: '쉬움', mul: 0.7 }, { key: 'normal', name: '보통', mul: 1 }, { key: 'hard', name: '어려움', mul: 1.8 }];
 
   function stageCount(s) { if (BOSS_ID[s]) return 1; const n = s <= 30 ? 20 : 24; return traitsOf(stageMonster(s), s).includes('swarm') ? Math.round(n * 1.7) : n; }
+  // 기절이 풀린 직후 0.5초 동안은 다시 기절하지 않는다 (이미 기절 중이면 더 긴 쪽으로 갱신)
+  function applyStun(e, t) { if (e.stunImm > 0 || e.stunT > 0) return; e.stunT = t; }   // 걸려 있는 동안은 연장되지 않고, 풀린 뒤 0.5초는 면역
   function stageHp(s, mul) {
     let hp = CFG.HP0 * Math.pow(CFG.HPG, s - 1) * mul;
     const id = stageMonster(s), tr = traitsOf(id, s);
-    if (BOSS_ID[s]) hp *= CFG.BOSS_MUL * (1 + s / 60) * (s === 60 ? CFG.FINAL_MUL : 1);
+    if (BOSS_ID[s]) hp *= CFG.BOSS_MUL * (1 + s / 60) * (s === 60 ? CFG.FINAL_MUL : CFG.BOSS_NERF);
     else { if (tr.includes('tank')) hp *= 1.8; if (tr.includes('fast')) hp *= 0.7; if (tr.includes('swarm')) hp *= 0.55; }
     return hp;
   }
@@ -602,7 +604,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     const g = {
       t: 0, stage: 0, lives: CFG.LIVES, gold: Math.max(0, Math.round(opt.startGold == null ? CFG.START_GOLD : opt.startGold)), wait: Math.max(0.5, opt.delay == null ? CFG.WAIT : opt.delay), delay: Math.max(0.5, opt.delay == null ? CFG.WAIT : opt.delay), units: [], enemies: [], fx: [], queue: [], spawnQ: [], up: JOBS.map(() => ({ a: 0, b: 0, c: 0 })), gems: Math.max(0, Math.round(opt.gems || 0)), nid: 1, uid: 1,
       kills: 0, leaked: 0, over: false, won: false, hpMul: opt.hpMul || 1, stageGold: Math.max(0, Math.round(opt.gold == null ? CFG.GOLD_STAGE : opt.gold)), fxOn: !!opt.fx, rnd: rngMaker(opt.seed || (Math.random() * 1e9) | 0),
-      maxStage: 0, events: [], spReady: [0, 0, 0], spCount: 0, draws: 0, merges: 0, bossKills: 0, streak: 0, bestStreak: 0, stageLeak0: 0, mdone: {}, picks: [], seat: opt.seat || 1, stat: {}, lastStat: null, cur: null,
+      maxStage: 0, events: [], spReady: [0, 0, 0, 0, 0], spCount: 0, draws: 0, merges: 0, bossKills: 0, streak: 0, bestStreak: 0, stageLeak0: 0, mdone: {}, picks: [], seat: opt.seat || 1, stat: {}, lastStat: null, cur: null,
     };
     return g;
   }
@@ -763,15 +765,18 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   // ---------- 특수보스 ----------
   // 버튼으로 불러내는 도전 보스. 처음엔 쿨타임이 없고, 부른 뒤부터 5분(게임 시간) 동안은 그 단계를 다시 부를 수 없다. 쿨타임은 단계마다 따로 돈다.
   // 처치하면 골드를 주고, 놓쳐도 목숨은 줄지 않는다. 필드에 있는 동안은 다음 스테이지 타이머가 흐르지 않는다.
+  // 특수보스: 스테이지와 상관없이 단계마다 정해진 체력(난이도 배율만 적용). 단계 N은 대략 N×10스테이지 보스 수준.
   const SPECIAL = [
-    { lv: 1, name: '1단계', gold: 100, mon: 29, hpx: 0.6, spd: 70 },
-    { lv: 2, name: '2단계', gold: 300, mon: 55, hpx: 1.2, spd: 62 },
-    { lv: 3, name: '3단계', gold: 500, mon: 60, hpx: 2.0, spd: 55 },
+    { lv: 1, name: '1단계', gold: 100, mon: 9, hp: 4000, spd: 70 },      // 5~10스테이지용
+    { lv: 2, name: '2단계', gold: 300, mon: 19, hp: 12000, spd: 65 },    // 10~20
+    { lv: 3, name: '3단계', gold: 500, mon: 27, hp: 40000, spd: 60 },    // 20~30
+    { lv: 4, name: '4단계', gold: 800, mon: 29, hp: 100000, spd: 56 },   // 30~40
+    { lv: 5, name: '5단계', gold: 1200, mon: 55, hp: 280000, spd: 52 },  // 40~50
   ];
   const SP_CD = 300;
   const spLeft = (g, lv) => Math.max(0, g.spReady[lv - 1] - g.t);
   const spAlive = (g, lv) => g.enemies.some(e => e.special && !e.dead && (lv == null || e.special === lv));
-  const spHp = (g, lv) => CFG.HP0 * Math.pow(CFG.HPG, Math.max(1, g.stage) - 1) * g.hpMul * 20 * SPECIAL[lv - 1].hpx;
+  const spHp = (g, lv) => SPECIAL[lv - 1].hp * g.hpMul;
   function summonSpecial(g, lv) {
     const d = SPECIAL[lv - 1]; if (!d || g.over) return { ok: false, why: 'over' };
     if (g.stage < 1) return { ok: false, why: 'start' };
@@ -926,7 +931,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       if (e.vulnT > 0) e.vulnT -= dt;
       if (e.tr.includes('regen') && e.poT <= 0 && e.hp < e.maxHp) e.hp = Math.min(e.maxHp, e.hp + e.maxHp * 0.025 * dt);
       const rage = e.tr.includes('rage') && e.hp <= e.maxHp * 0.5 ? 1.6 : 1;
-      if (e.stunT > 0) e.stunT -= dt;
+      if (e.stunImm > 0) e.stunImm -= dt; if (e.stunT > 0) { e.stunT -= dt; if (e.stunT <= 0) { e.stunT = 0; e.stunImm = 0.5; } }
       else { if (e.slowT > 0) e.slowT -= dt; e.d += e.spd * rage * (e.slowT > 0 ? e.slowF : 1) * dt; }
       if (e.flash > 0) e.flash -= dt;
       if (e.d >= L) { e.dead = true; e.leak = true; if (e.special) { g.events.push({ t: 'spleak', lv: e.special }); continue; } g.leaked++; g.lives -= e.boss ? CFG.BOSS_LEAK : 1; if (e.boss && e.stage === 60) { g.lives = 0; g.loseWhy = 'finalboss'; } g.events.push({ t: 'leak', boss: e.boss }); continue; }
@@ -982,8 +987,8 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
         case 'monk': {
           const stunP = MONK_STUN[u.grade] + 0.04 * UP.b, mr = Math.max([0, 60, 95][tier], UP.c ? 40 + 15 * UP.c : 0), sm = Math.max(lg ? 0.6 : tier ? 0.4 : 0, UP.c ? 0.3 + 0.1 * UP.c : 0);
           sh.stun = g.rnd() < stunP; sh.r = mr;
-          damage(g, tgt, dm); if (sh.stun) tgt.stunT = Math.max(tgt.stunT, tgt.boss ? MONK_STUN_B[u.grade] : MONK_STUN_T[u.grade]);
-          if (sm) for (const e of en) if (e !== tgt && !e.dead && (e.x - tgt.x) ** 2 + (e.y - tgt.y) ** 2 <= mr * mr) { damage(g, e, dm * sm); if (sh.stun && lg) e.stunT = Math.max(e.stunT, e.boss ? MONK_STUN_B[5] : MONK_STUN_T[5]); }
+          damage(g, tgt, dm); if (sh.stun) applyStun(tgt, tgt.boss ? MONK_STUN_B[u.grade] : MONK_STUN_T[u.grade]);
+          if (sm) for (const e of en) if (e !== tgt && !e.dead && (e.x - tgt.x) ** 2 + (e.y - tgt.y) ** 2 <= mr * mr) { damage(g, e, dm * sm); if (sh.stun && lg) applyStun(e, e.boss ? MONK_STUN_B[5] : MONK_STUN_T[5]); }
           break;
         }
         case 'alch': {
@@ -1172,7 +1177,11 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   }
   const q = new URLSearchParams(location.search);
   function peerOpts() {
-    const o = { debug: 0, config: { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }, { urls: 'stun:stun1.l.google.com:19302' }, { urls: 'stun:global.stun.twilio.com:3478' }] } };
+    const ice = [{ urls: 'stun:stun.l.google.com:19302' }, { urls: 'stun:stun1.l.google.com:19302' }, { urls: 'stun:global.stun.twilio.com:3478' },
+      // 방화벽·통신사 때문에 직접 연결이 안 되는 사람을 위한 중계(TURN) 서버. 주소를 바꾸려면 ?turn=turn:주소:포트,아이디,비밀번호
+      { urls: ['turn:openrelay.metered.ca:80', 'turn:openrelay.metered.ca:443', 'turns:openrelay.metered.ca:443?transport=tcp'], username: 'openrelayproject', credential: 'openrelayproject' }];
+    if (q.get('turn')) { const t = q.get('turn').split(','); ice.unshift({ urls: t[0], username: t[1] || '', credential: t[2] || '' }); }
+    const o = { debug: 0, config: { iceServers: ice } };
     if (q.get('peerhost')) { o.host = q.get('peerhost'); o.port = +q.get('peerport') || 9000; o.path = q.get('peerpath') || '/'; o.secure = q.get('peersecure') === '1'; }
     return o;
   }
@@ -1236,28 +1245,40 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     };
   }
 
-  async function join(name) {
+  const BROKER = ['network', 'server-error', 'socket-error', 'socket-closed', 'ssl-unavailable'];
+  const mkErr = (type, msg) => { const e = new Error(msg || type); e.type = type; return e; };
+  async function join(name, role) {
     await loadLib();
     const id = 'hrtd-' + name;
-    // 먼저 방장 자리를 노려본다. 이미 있으면 손님으로 들어간다.
+    // 방장: 방 코드를 접속 ID로 등록한다. 이미 쓰는 코드면 'taken'.
     const asHost = () => new Promise((resolve, reject) => {
       const p = new window.Peer(id, peerOpts()); let done = false;
-      const to = setTimeout(() => { if (!done) { done = true; try { p.destroy(); } catch (e) { } reject(new Error('timeout')); } }, 9000);
+      const to = setTimeout(() => { if (!done) { done = true; try { p.destroy(); } catch (e) { } reject(mkErr('broker', 'timeout')); } }, 10000);
       p.on('open', () => { if (done) return; done = true; clearTimeout(to); resolve(makeRoom(p, 'host')); });
-      p.on('error', e => { if (done) return; done = true; clearTimeout(to); try { p.destroy(); } catch (x) { } if (e && e.type === 'unavailable-id') resolve(null); else reject(e); });
+      p.on('error', e => { if (done) return; done = true; clearTimeout(to); try { p.destroy(); } catch (x) { } if (e && e.type === 'unavailable-id') reject(mkErr('taken')); else reject(BROKER.includes(e && e.type) ? mkErr('broker', e.type) : e); });
     });
+    // 손님: 방장의 ID로 연결한다. 중개 서버 접속 실패와 사람 사이 직접 연결 실패를 나눠서 알린다.
     const asGuest = () => new Promise((resolve, reject) => {
-      const p = new window.Peer(undefined, peerOpts()); let done = false;
+      const p = new window.Peer(undefined, peerOpts()); let done = false, stage = 'broker';
       const fail = e => { if (done) return; done = true; clearTimeout(to); try { p.destroy(); } catch (x) { } reject(e); };
-      const to = setTimeout(() => fail(new Error('timeout')), 10000);
-      p.on('error', fail);
+      const to = setTimeout(() => fail(mkErr(stage === 'broker' ? 'broker' : 'p2p', 'timeout')), stage === 'broker' ? 10000 : 10000);
+      const toP2p = () => { clearTimeout(to); };
+      p.on('error', e => { const t = e && e.type; if (t === 'peer-unavailable') return fail(e); if (BROKER.includes(t)) return fail(mkErr('broker', t)); if (t === 'webrtc' || t === 'network') return fail(mkErr('p2p', t)); fail(e); });
       p.on('open', () => {
+        stage = 'p2p'; clearTimeout(to); const t2 = setTimeout(() => fail(mkErr('p2p', 'timeout')), 14000);
         const c = p.connect(id, { reliable: true });
-        c.on('open', () => { const r = makeRoom(p, 'guest', c); c.send({ t: 'hello' }); r.ready.then(() => { if (done) return; done = true; clearTimeout(to); resolve(r); }, fail); });
-        c.on('error', fail);
+        c.on('iceStateChanged', s => { if (s === 'failed') { clearTimeout(t2); fail(mkErr('p2p', 'ice-failed')); } });
+        c.on('open', () => { const r = makeRoom(p, 'guest', c); c.send({ t: 'hello' }); r.ready.then(() => { if (done) return; done = true; clearTimeout(t2); resolve(r); }, e => { clearTimeout(t2); fail(e); }); });
+        c.on('error', e => { clearTimeout(t2); fail(mkErr('p2p', e && e.type)); });
       });
     });
-    const h = await asHost(); if (h) return h;
+    if (role === 'host') return await asHost();
+    if (role === 'guest') {
+      let last;
+      for (let k = 0; k < 2; k++) { try { return await asGuest(); } catch (e) { last = e; if (!(e && e.type === 'p2p')) throw e; } }   // 직접 연결 실패는 한 번 더 시도
+      throw last;
+    }
+    try { return await asHost(); } catch (e) { if (!e || e.type !== 'taken') throw e; }
     return await asGuest();
   }
   window.HRTD_ROOM = { join };
@@ -1352,14 +1373,15 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       return { peer: p.peer, me: p.isMe, n: String(q.n).slice(0, 10), h: q.h === 1, ph: String(q.ph || 'lobby'), st: Math.max(0, Math.min(60, +q.st || 0)), lv: Math.max(0, Math.min(50, isNaN(+q.lv) ? 50 : +q.lv)), sp: +q.sp, df: +q.df, gp: q.gp, g0: q.g0, tm: q.tm, hm: q.hm, u: typeof q.u === 'string' ? q.u : '', e: typeof q.e === 'string' ? q.e : '', gd: +q.gd || 0, sn: Math.max(0, Math.min(10, +q.sn || 0)), at: p.updatedAt };
     });
   }
-  function netErr(e, dflt) { const t = e && (e.type || e.message); if (t === 'peer-unavailable') return '그 코드의 방을 찾지 못했어요. 코드를 다시 확인해 주세요.'; if (t === 'full') return '방이 가득 찼어요.'; if (t === 'peerjs') return '멀티 연결 모듈을 불러오지 못했어요. 인터넷 연결을 확인해 주세요.'; return dflt; }
+  function netErr(e, dflt) { const t = e && (e.type || e.message); if (t === 'peer-unavailable') return '그 코드의 방을 찾지 못했어요. 코드를 다시 확인해 주세요.'; if (t === 'full') return '방이 가득 찼어요.'; if (t === 'broker') return '연결 중개 서버에 접속하지 못했어요. 인터넷·VPN·방화벽(회사/학교망)을 확인하고 다시 시도해 주세요. (' + (e.message || '') + ')'; if (t === 'p2p') return '방장과 직접 연결하지 못했어요. 통신사·공유기 설정 때문일 수 있어요. 와이파이↔LTE 바꾸기, VPN 끄기, WebRTC 차단 확장 끄기, 크롬으로 접속해 보세요. (' + (e.message || '') + ')'; if (t === 'peerjs') return '멀티 연결 모듈을 불러오지 못했어요. 인터넷 연결을 확인해 주세요.'; return dflt; }
   function genCode() { const A = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; let s = ''; for (let i = 0; i < 4; i++) s += A[Math.floor(Math.random() * A.length)]; return s; }
   async function createRoom() {
     if (!S.ROOM) return homeMsg('이 화면에서는 방 기능을 쓸 수 없어요. 혼자 하기를 이용해 주세요.');
     S.name = getName(); readHomeNums(); homeMsg('방을 만드는 중...', true); lockHome(true);
     try {
-      const code = genCode();
-      const r = await S.ROOM.join('g-' + code.toLowerCase());
+      let code = '', r = null;
+      for (let k = 0; k < 4 && !r; k++) { code = genCode(); try { r = await S.ROOM.join('g-' + code.toLowerCase(), 'host'); } catch (e) { if (!(e && e.type === 'taken')) throw e; } }
+      if (!r) throw new Error('taken');
       S.seatPref = 0; S.lobbySig = ''; S.room = r; S.host = true; S.code = code; S.mode = 'room'; S.sawLobby = true; S.spectate = false;
       S.unsub = r.onPeers(onPeers);
       setPres({ n: S.name, h: 1, ph: 'lobby', sp: S.speed, df: S.diff, ...pushNums(), st: 0, lv: 50 });
@@ -1373,7 +1395,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     if (!/^[A-Z0-9]{4}$/.test(code)) return homeMsg('방 코드는 영문과 숫자 4글자예요.');
     S.name = getName(); homeMsg('방을 찾는 중...', true); lockHome(true);
     try {
-      const r = await S.ROOM.join('g-' + code.toLowerCase());
+      const r = await S.ROOM.join('g-' + code.toLowerCase(), 'guest');
       S.seatPref = 0; S.lobbySig = ''; S.room = r; S.host = false; S.code = code; S.mode = 'room'; S.sawLobby = false; S.spectate = false;
       S.unsub = r.onPeers(onPeers);
       setPres({ n: S.name, h: 0, ph: 'lobby', st: 0, lv: 50 });
