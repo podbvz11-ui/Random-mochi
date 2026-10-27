@@ -262,6 +262,11 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
 
 .selbox .debuff{font-size:12px;color:var(--accent);margin-top:2px}
 
+.seatsel{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:4px 0 6px;font-size:12px}.seatsel select{background:#1c2a3a;color:inherit;border:1px solid #3a4f66;border-radius:6px;padding:3px 6px;font-size:12px}
+
+.plist .seatpick{margin-left:auto;background:#1c2a3a;color:inherit;border:1px solid #3a4f66;border-radius:6px;padding:3px 6px;font-size:12px}.plist .tag.seat{margin-left:auto}
+.seatsel select:disabled{opacity:.5}
+
 </style>
 </head>
 <body>
@@ -416,6 +421,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       <div class="scol">
       <div class="missbox" id="missbox">
         <h3><span>미션</span><span class="muted" id="ms-sub"></span></h3>
+        <div class="seatsel"><label for="seat-sel">자리 이동</label><select id="seat-sel"></select><span class="muted">고른 자리의 자리 미션을 할 수 있어요</span></div>
         <div class="uptabs" id="ms-tabs"></div>
         <div class="msrows" id="ms-body"></div>
       </div>
@@ -441,6 +447,8 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
         <h4>🐹 뽑기와 합성</h4>
         <p>뽑기(100골드)로 8가지 직업(검사·궁수·마법사·도적·거너·무도가·연금술사·창병) 중 하나가 무작위로 나와요. 등급은 노멀 → 커먼 → 레어 → 에픽 → 유니크 → 레전더리 순이에요.</p>
         <p>같은 직업·같은 등급 2마리를 합치면 한 등급 위, 8가지 직업 중 무작위 직업(같은 직업도 가능)으로 바뀌어요. 같은 등급 3마리를 랜덤 합성하면 한 등급 위(가끔 두 등급 위)의 무작위 직업이 돼요. 금색 ▲는 같은 직업 합성이 가능하다는 표시예요. 유니크는 확실히 좋은 능력, 레전더리는 아주 화려한 특별 능력이 있어요.</p>
+        <h4>🪑 자리 이동</h4>
+        <p>미션 창의 '자리 이동'에서 원하는 번호(1~10번)를 고르면 그 자리의 자리 미션으로 바뀌어요. 9번·10번은 1번·2번과 같은 미션이에요. '자동'은 방에 들어온 순서대로 정해져요.</p>
         <h4>🛠️ 직업별 특징</h4>
         <p>검사: 보호막이 있는 몬스터에게 추가 피해(등급이 오를수록 커져요). 창병: 맞은 몬스터에게 '취약' 디버프를 걸어 잠깐 동안 받는 피해를 늘려요. 무도가: 등급이 오를수록 기절 확률과 시간이 늘어요. 연금술사: 등급이 오를수록 독이 세지고 몬스터를 더 느리게 해요. 거너: 사거리가 맵 전체이고 체력이 가장 높은 적(보스)을 노려요. 햄스터를 선택하면 그 등급의 효과 수치가 나와요.</p>
         <h4>👾 몬스터</h4>
@@ -1341,7 +1349,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     if (!S.room) return [];
     return S.room.peers().filter(p => p.kind === 'viewer' && p.presence && p.presence.n && !(p.isMe && !p.sameTab)).map(p => {
       const q = p.presence;
-      return { peer: p.peer, me: p.isMe, n: String(q.n).slice(0, 10), h: q.h === 1, ph: String(q.ph || 'lobby'), st: Math.max(0, Math.min(60, +q.st || 0)), lv: Math.max(0, Math.min(50, isNaN(+q.lv) ? 50 : +q.lv)), sp: +q.sp, df: +q.df, gp: q.gp, g0: q.g0, tm: q.tm, hm: q.hm, u: typeof q.u === 'string' ? q.u : '', e: typeof q.e === 'string' ? q.e : '', gd: +q.gd || 0, at: p.updatedAt };
+      return { peer: p.peer, me: p.isMe, n: String(q.n).slice(0, 10), h: q.h === 1, ph: String(q.ph || 'lobby'), st: Math.max(0, Math.min(60, +q.st || 0)), lv: Math.max(0, Math.min(50, isNaN(+q.lv) ? 50 : +q.lv)), sp: +q.sp, df: +q.df, gp: q.gp, g0: q.g0, tm: q.tm, hm: q.hm, u: typeof q.u === 'string' ? q.u : '', e: typeof q.e === 'string' ? q.e : '', gd: +q.gd || 0, sn: Math.max(0, Math.min(10, +q.sn || 0)), at: p.updatedAt };
     });
   }
   function netErr(e, dflt) { const t = e && (e.type || e.message); if (t === 'peer-unavailable') return '그 코드의 방을 찾지 못했어요. 코드를 다시 확인해 주세요.'; if (t === 'full') return '방이 가득 찼어요.'; if (t === 'peerjs') return '멀티 연결 모듈을 불러오지 못했어요. 인터넷 연결을 확인해 주세요.'; return dflt; }
@@ -1352,7 +1360,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     try {
       const code = genCode();
       const r = await S.ROOM.join('g-' + code.toLowerCase());
-      S.room = r; S.host = true; S.code = code; S.mode = 'room'; S.sawLobby = true; S.spectate = false;
+      S.seatPref = 0; S.lobbySig = ''; S.room = r; S.host = true; S.code = code; S.mode = 'room'; S.sawLobby = true; S.spectate = false;
       S.unsub = r.onPeers(onPeers);
       setPres({ n: S.name, h: 1, ph: 'lobby', sp: S.speed, df: S.diff, ...pushNums(), st: 0, lv: 50 });
       enterLobby(); homeMsg('');
@@ -1366,7 +1374,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     S.name = getName(); homeMsg('방을 찾는 중...', true); lockHome(true);
     try {
       const r = await S.ROOM.join('g-' + code.toLowerCase());
-      S.room = r; S.host = false; S.code = code; S.mode = 'room'; S.sawLobby = false; S.spectate = false;
+      S.seatPref = 0; S.lobbySig = ''; S.room = r; S.host = false; S.code = code; S.mode = 'room'; S.sawLobby = false; S.spectate = false;
       S.unsub = r.onPeers(onPeers);
       setPres({ n: S.name, h: 0, ph: 'lobby', st: 0, lv: 50 });
       let host = null;
@@ -1387,18 +1395,33 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   function enterLobby() {
     show('lobby'); $('lobby-code').textContent = S.code; renderSettings(); renderLobby();
   }
+  function seatMap(ps) {
+    const list = ps.slice().sort((a, b) => (a.at || 0) - (b.at || 0)), m = {}, used = {};
+    list.forEach(p => { if (p.sn && !used[p.sn]) { used[p.sn] = 1; m[p.peer] = p.sn; } });
+    list.forEach(p => { if (!m[p.peer]) { let k = 1; while (used[k] && k < 10) k++; used[k] = 1; m[p.peer] = k; } });
+    return m;
+  }
   function renderLobby() {
     const ps = players(); const host = ps.find(p => p.h);
     $('pcount').textContent = ps.length + ' / ' + MAXP;
-    const ul = $('plist'); ul.textContent = '';
+    const sm = seatMap(ps), sig = ps.map(p => [p.peer, p.n, p.h, p.sn, sm[p.peer]].join(',')).join(';') + '|' + S.spectate;
+    const ul = $('plist'); if (S.lobbySig !== sig) { S.lobbySig = sig; ul.textContent = '';
     ps.sort((a, b) => (b.h - a.h) || a.at - b.at).forEach(p => {
       const li = document.createElement('li');
       const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = p.n; li.appendChild(nm);
       if (p.h) { const t = document.createElement('span'); t.className = 'tag host'; t.textContent = '방장'; li.appendChild(t); }
       if (p.me) { const t = document.createElement('span'); t.className = 'tag me'; t.textContent = '나'; li.appendChild(t); }
+      if (p.me && !S.spectate) {
+        const sel = document.createElement('select'); sel.className = 'seatpick'; sel.setAttribute('aria-label', '내 자리 번호');
+        const o0 = document.createElement('option'); o0.value = '0'; o0.textContent = '자동(' + sm[p.peer] + '번)'; sel.appendChild(o0);
+        for (let k = 1; k <= 10; k++) { const o = document.createElement('option'); o.value = String(k); const taken = ps.some(q => !q.me && q.sn === k); o.textContent = k + '번 자리' + (taken ? ' (사용 중)' : ''); o.disabled = taken; sel.appendChild(o); }
+        sel.value = String(p.sn || 0);
+        sel.addEventListener('change', () => { S.seatPref = +sel.value || 0; setPres({ sn: S.seatPref }); });
+        li.appendChild(sel);
+      } else { const t = document.createElement('span'); t.className = 'tag seat'; t.textContent = sm[p.peer] + '번 자리'; li.appendChild(t); }
       ul.appendChild(li);
     });
-    for (let i = ps.length; i < Math.min(MAXP, ps.length + 2); i++) { const li = document.createElement('li'); li.className = 'empty'; li.textContent = '빈 자리'; ul.appendChild(li); }
+    for (let i = ps.length; i < Math.min(MAXP, ps.length + 2); i++) { const li = document.createElement('li'); li.className = 'empty'; li.textContent = '빈 자리'; ul.appendChild(li); } }
     const note = $('lobby-note'), hint = $('lobby-hint'), start = $('b-start');
     start.hidden = !S.host;
     if (S.spectate) { note.textContent = '이미 시작된 방이에요. 순위만 볼 수 있어요.'; note.className = 'msg'; hint.textContent = ''; }
@@ -1427,7 +1450,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   function startGame(mode) {
     S.mode = mode; S.g = T.create({ hpMul: T.DIFFS[S.diff].mul * S.hp / 100, gold: S.gold, startGold: S.start, delay: S.wait * S.speed, fx: true });
     S.vfx = []; S.watch = null; S.t0 = performance.now(); S.paused = false; S.sel = null; S.hover = -1; S.over = false; S.banner = null; S.lastKey = ''; S.lastPres = 0;
-    S.cntKey = ''; S.spKey = ''; $('m-score').hidden = true; $('m-dmg').hidden = true; $('m-pick').hidden = true; S.msKey = ''; S.testSeat = 1; $('t-seat').textContent = '내 자리: 1번'; $('tips').hidden = true; $('b-help').setAttribute('aria-pressed', 'false'); $('h-diff').textContent = T.DIFFS[S.diff].name + (S.hp !== 100 ? ' · 체력 ' + S.hp + '%' : ''); $('over').hidden = true; $('b-pause').hidden = (mode !== 'solo' && mode !== 'test'); $('testbox').hidden = (mode !== 'test'); S.placeOn = false; renderTest(); S.miKey = ''; S.upKey = ''; S.upArm = null; S.upJob = 0; $('b-pause').textContent = '일시정지';
+    S.cntKey = ''; S.spKey = ''; $('m-score').hidden = true; $('m-dmg').hidden = true; $('m-pick').hidden = true; S.msKey = ''; S.testSeat = 1; S.seatPick = 0; S.lockSeat = 0; { const ps0 = mode === 'room' ? players() : []; const me0 = ps0.find(p => p.me); if (me0) S.lockSeat = seatMap(ps0)[me0.peer]; const ss = $('seat-sel'); if (ss) { ss.value = '0'; ss.disabled = mode === 'room'; ss.title = mode === 'room' ? '멀티 게임 중에는 자리를 바꿀 수 없어요. 시작 전 대기실에서 골라요.' : ''; } } $('t-seat').textContent = '내 자리: 1번'; $('tips').hidden = true; $('b-help').setAttribute('aria-pressed', 'false'); $('h-diff').textContent = T.DIFFS[S.diff].name + (S.hp !== 100 ? ' · 체력 ' + S.hp + '%' : ''); $('over').hidden = true; $('b-pause').hidden = (mode !== 'solo' && mode !== 'test'); $('testbox').hidden = (mode !== 'test'); S.placeOn = false; renderTest(); S.miKey = ''; S.upKey = ''; S.upArm = null; S.upJob = 0; $('b-pause').textContent = '일시정지';
     $('h-speed').textContent = 'x' + S.speed; $('h-gp').textContent = '+' + S.gold;
     $('rank-title').textContent = mode === 'room' ? '실시간 순위' : '내 기록';
     show('game'); resize(); renderSel(); hud(true); renderRank();
@@ -2121,6 +2144,8 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   // ---------- 미션 / 선택시민 ----------
   const GN = () => T.GRADES.map(x => x.name);
   function seatNo() {
+    if (S.mode === 'room' && S.lockSeat) return S.lockSeat;
+    if (S.seatPick) return S.seatPick;
     if (S.mode === 'room' && S.room) { const ps = players().slice().sort((a, b) => (a.at || 0) - (b.at || 0)); const i = ps.findIndex(p => p.me); return Math.max(1, Math.min(10, i + 1)); }
     return S.testSeat || 1;
   }
@@ -2182,6 +2207,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       b.addEventListener('click', () => { if (g.over || S.paused) return; const r = T.claimPick(g, i, gr); if (r.ok) { HAudio.sys('draw'); toast(j.name + ' ' + GN()[gr] + ' 등장!'); box.dataset.k = ''; sync(); } else toast(r.why === 'full' ? '빈 자리가 없어요. 자리를 비운 뒤 다시 눌러 주세요' : '선택권이 없어요'); }); grid.appendChild(b); });
   }
   $('b-pick').addEventListener('click', () => { $('m-pick').hidden = false; $('pick-box').dataset.k = ''; renderPick(); });
+  (function () { const sel = $('seat-sel'); if (!sel) return; const o0 = document.createElement('option'); o0.value = '0'; o0.textContent = '자동'; sel.appendChild(o0); for (let i = 1; i <= 10; i++) { const o = document.createElement('option'); o.value = String(i); o.textContent = i + '번 자리'; sel.appendChild(o); } sel.addEventListener('change', () => { S.seatPick = +sel.value || 0; if (S.seatPick) S.msTab = 'seat'; S.msKey = ''; renderMiss(); }); })();
   $('t-seat').addEventListener('click', () => { S.testSeat = (S.testSeat || 1) % 10 + 1; $('t-seat').textContent = '내 자리: ' + S.testSeat + '번'; S.msKey = ''; renderMiss(); });
 
   // ---------- 몬스터 정보 ----------
