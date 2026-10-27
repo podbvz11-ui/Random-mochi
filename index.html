@@ -298,7 +298,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
         <li><b>뽑기</b>(100골드)로 노멀 햄스터를 뽑아요. 직업은 8가지 중 무작위예요.</li>
         <li>같은 직업, 같은 등급 <b>2마리</b>를 합성하면 한 등급 위 햄스터 1마리가 돼요. 직업은 합친 직업을 뺀 나머지 7가지 중에서 무작위로 정해져요. 노멀에서 레전더리까지 6단계예요.</li>
         <li>같은 등급이면 직업이 달라도 3마리를 <b>랜덤 합성</b>할 수 있어요. 직업은 8가지 중 무작위이고, 10% 확률로 두 등급이 올라요.</li>
-        <li>골드는 몬스터를 잡아서가 아니라 <b>웨이브의 몬스터를 모두 정리한 순간</b> 정해진 만큼 들어와요. 그래서 다음 웨이브가 오기 전에 뽑기와 합성을 할 수 있어요. 시작 골드는 500, 웨이브당 골드는 200이 기본이고 방 설정에서 바꿀 수 있어요.</li>
+        <li>골드는 몬스터를 잡아서가 아니라 <b>웨이브의 몬스터를 모두 정리한 순간</b> 정해진 만큼 들어와요. 그래서 다음 웨이브가 오기 전에 뽑기와 합성을 할 수 있어요. 시작 골드는 600, 웨이브당 골드는 200이 기본이고 방 설정에서 바꿀 수 있어요.</li>
         <li>다음 웨이브 타이머는 <b>이전 웨이브의 몬스터가 모두 사라진 뒤</b>에야 흐르기 시작해요. 대기 시간은 화면에 보이는 초 기준이라 배속과 상관없이 같아요.</li>
         <li>몬스터는 빨간 문에서 나와 지도의 모든 길을 지나 파란 문으로 나가요. 파란 문까지 가면 목숨이 줄어요. 보스는 10이고, 목숨은 50이에요.</li>
         <li>10, 20, 30, 40, 50, 60스테이지마다 보스가 나와요. 60스테이지까지 막으면 승리예요. 승리자는 여러 명일 수 있어요.</li>
@@ -563,7 +563,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   function stageMonster(s) { return BOSS_ID[s] || ORDER[s - 1 - Math.floor(s / 10)]; }
 
   const CFG = {
-    START_GOLD: 500, DRAW_COST: 100, LIVES: 50, WAIT: 10, SPAWN_GAP: 0.65, GOLD_STAGE: 200, SPEED: 130,
+    START_GOLD: 600, DRAW_COST: 100, LIVES: 50, WAIT: 10, SPAWN_GAP: 0.65, GOLD_STAGE: 200, SPEED: 130,
     HP0: 150, HPG: 1.1, BOSS_MUL: 14, BOSS_LEAK: 10, SELL_BASE: 40, GEM_GOLD: 100,
   };
   const DIFFS = [{ key: 'easy', name: '쉬움', mul: 0.7 }, { key: 'normal', name: '보통', mul: 1 }, { key: 'hard', name: '어려움', mul: 1.8 }];
@@ -1231,7 +1231,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   const $ = id => document.getElementById(id);
   const SPEEDS = [1, 2, 3, 4, 6, 8];
   const MAXP = 10;
-  const S = window.__S = { view: 'home', mode: 'solo', ROOM: null, room: null, unsub: null, host: false, code: '', name: '', speed: 2, diff: 1, gold: 200, start: 500, wait: 10, hp: 100, vfx: [], simple: false,
+  const S = window.__S = { view: 'home', mode: 'solo', ROOM: null, room: null, unsub: null, host: false, code: '', name: '', speed: 2, diff: 1, gold: 200, start: 600, wait: 10, hp: 100, vfx: [], simple: false,
     g: null, t0: 0, paused: false, pauseAt: 0, sel: null, hover: -1, auto: false, sawLobby: false, spectate: false,
     lastKey: '', lastPres: 0, banner: null, toastT: 0, over: false, drag: null, hudT: 0, pressedAt: 0 };
 
@@ -1279,7 +1279,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     }
   }
   const NUM = {
-    start: { pres: 'g0', def: 500, min: 0, max: 9999, id: 'sin', presets: [300, 500, 1000, 2000] },
+    start: { pres: 'g0', def: 600, min: 0, max: 9999, id: 'sin', presets: [300, 600, 1000, 2000] },
     gold: { pres: 'gp', def: 200, min: 0, max: 9999, id: 'gin', presets: [100, 200, 300, 500] },
     wait: { pres: 'tm', def: 10, min: 1, max: 120, id: 'win', presets: [5, 10, 15, 30, 60] },
     hp: { pres: 'hm', def: 100, min: 10, max: 1000, id: 'hin', presets: [50, 100, 150, 200, 300] },
@@ -1510,15 +1510,12 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     else if (u.grade === 4) { ctx.save(); ctx.globalCompositeOperation = 'lighter'; const pl = (Math.sin(t * 2.4 + u.id) + 1) / 2, gu = ctx.createRadialGradient(cx, cy, 3, cx, cy, w * .55); gu.addColorStop(0, 'rgba(255,190,70,' + (.16 + .1 * pl) + ')'); gu.addColorStop(1, 'rgba(255,170,40,0)'); ctx.fillStyle = gu; ctx.beginPath(); ctx.arc(cx, cy, w * .55, 0, 6.2832); ctx.fill(); ctx.restore(); }
     { const gc = T.GRADES[u.grade].color; ctx.save(); ctx.globalAlpha = .55; ctx.strokeStyle = gc; ctx.lineWidth = 4; ctx.beginPath(); ctx.ellipse(cx, cy0 + ch * .2, w * .34, w * .1, 0, 0, 6.2832); ctx.stroke(); ctx.globalAlpha = .16; ctx.fillStyle = gc; ctx.fill(); ctx.restore(); }
     if (ok(im)) ctx.drawImage(im, cx - w / 2, cy - h / 2, w, h); else { ctx.fillStyle = T.GRADES[u.grade].color; ctx.beginPath(); ctx.arc(cx, cy, 20, 0, 6.2832); ctx.fill(); }
-    // 구분 표시: 등급 = 아래 이름표 + 발밑 고리(등급 색), 직업 = 왼쪽 위 동그라미(직업 색 + 글자)
+    // 구분 표시: 등급 = 아래 이름표 + 발밑 고리(등급 색)
     const GR = T.GRADES[u.grade], JB = T.JOBS[u.job], by = cy0 + ch / 2 - 15;
     ctx.save(); ctx.font = "400 13px 'Jua', 'Noto Sans KR', sans-serif"; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     const gw = ctx.measureText(GR.name).width + 14;
     rr(ctx, cx - gw / 2, by, gw, 16, 8); ctx.fillStyle = GR.color; ctx.fill(); ctx.lineWidth = 1.5; ctx.strokeStyle = 'rgba(8,10,20,.85)'; ctx.stroke();
     ctx.fillStyle = u.grade === 0 ? '#10131f' : '#fff'; ctx.lineWidth = 3; if (u.grade !== 0) { ctx.strokeStyle = 'rgba(8,10,20,.55)'; ctx.strokeText(GR.name, cx, by + 8.5); } ctx.fillText(GR.name, cx, by + 8.5);
-    const jx = cx - cw / 2 + 15, jy = cy0 - ch / 2 + 15;
-    ctx.beginPath(); ctx.arc(jx, jy, 12, 0, 6.2832); ctx.fillStyle = JB.color; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = 'rgba(8,10,20,.9)'; ctx.stroke();
-    ctx.font = "400 15px 'Jua', 'Noto Sans KR', sans-serif"; ctx.fillStyle = '#10131f'; ctx.fillText(JB.ch, jx, jy + 1);
     ctx.restore();
     if (u.grade < 5 && (same[u.job * 10 + u.grade] || 0) >= 2) { ctx.fillStyle = '#ffc247'; ctx.font = "400 22px 'Jua', sans-serif"; ctx.textAlign = 'center'; ctx.strokeStyle = 'rgba(40,24,0,.8)'; ctx.lineWidth = 4; const my = cy0 - ch / 2 + 20 + Math.sin(t * 6) * 2; ctx.strokeText('▲', cx + cw * 0.34, my); ctx.fillText('▲', cx + cw * 0.34, my); }
   }
