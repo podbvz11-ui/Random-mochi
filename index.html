@@ -451,7 +451,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
         <p>미션 창의 '자리 이동'에서 원하는 번호(1~10번)를 고르면 그 자리의 자리 미션으로 바뀌어요. 9번·10번은 1번·2번과 같은 미션이에요. '자동'은 방에 들어온 순서대로 정해져요.</p>
         <h4>🛠️ 직업별 특징</h4>
         <p>검사와 궁수는 고유 강화 두 개(검사: 연속 베기·처형 / 궁수: 속사·관통 사격)를 한 단계 올릴 때마다 공격력이 10%씩 더 올라요. 둘 다 5단계까지 올리면 공격력이 두 배가 돼요.</p>
-        <p>검사·궁수: 고유 강화(2종)를 한 단계 올릴 때마다 공격력이 늘어요(검사 20%, 궁수 10%). 검사: 보호막이 있는 몬스터에게 추가 피해(등급이 오를수록 커져요). 창병: 맞은 몬스터에게 '취약' 디버프를 걸어 잠깐 동안 받는 피해를 늘려요. 무도가: 공격 속도는 느리지만 한 방이 묵직하고, 등급이 오를수록 기절 확률과 시간이 늘어요. 이미 기절한 몬스터는 기절이 길어지지 않고, 기절이 풀린 뒤 0.5초 동안은 다시 기절하지 않아요. 기절이 풀린 몬스터는 0.5초 동안 다시 기절하지 않아요. 연금술사: 등급이 오를수록 독이 세지고 몬스터를 더 느리게 해요. 거너: 사거리가 맵 전체이고 체력이 가장 높은 적(보스)을 노려요. 햄스터를 선택하면 그 등급의 효과 수치가 나와요.</p>
+        <p>검사·궁수: 고유 강화(2종)를 한 단계 올릴 때마다 공격력이 늘어요(검사 20%, 궁수 10%). 검사: 보호막이 있는 몬스터에게 추가 피해(등급이 오를수록 커져요). 창병: 맞은 몬스터에게 '취약' 디버프를 걸어 잠깐 동안 받는 피해를 늘려요. 무도가: 공격 속도는 느리지만 한 방이 묵직하고, 등급이 오를수록 기절 확률과 시간이 늘어요. 이미 기절한 몬스터는 기절이 길어지지 않고, 기절이 풀린 뒤 0.5초 동안은 다시 기절하지 않아요. 기절이 풀린 몬스터는 0.5초 동안 다시 기절하지 않아요. 연금술사: 등급이 오를수록 독이 세지고 몬스터를 더 느리게 하며, 독에 걸린 몬스터의 치유(재생)를 25/30/35/40/45/70% 줄여요. 거너: 사거리가 맵 전체이고 체력이 가장 높은 적(보스)을 노려요. 햄스터를 선택하면 그 등급의 효과 수치가 나와요.</p>
         <h4>👾 몬스터</h4>
         <p>스테이지마다 몬스터가 한 종류씩 나와요. 10스테이지부터는 분열·재생·빠름·장갑·보호막·회피·분노·무리·튼튼함 같은 특성이 붙어요. 오른쪽 몬스터 정보창에서 체력과 특성을 볼 수 있어요. 골드는 웨이브의 몬스터를 모두 없앴을 때 받고, 다음 웨이브는 그때부터 대기 시간이 지나야 시작해요.</p>
         <h4>💎 보석과 직업 강화</h4>
@@ -537,7 +537,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     { key: 'rogue', color: '#b57cff', ch: '도', name: '도적', rng: 220, spd: 3.2, dmg: 4.5, desc: '아주 빠르고 가끔 치명타를 낸다' },
     { key: 'gunner', color: '#ffa63c', ch: '거', name: '거너', rng: 2600, spd: 0.55, dmg: 27, desc: '사거리가 맵 전체예요. 체력이 가장 높은 적(보스)을 노리는 보스 사냥꾼이에요' },
     { key: 'monk', color: '#ff86bd', ch: '무', name: '무도가', rng: 170, spd: 0.9, dmg: 27, desc: '느리지만 묵직하게 때리고 가끔 적을 기절시킨다 (등급이 오를수록 기절 확률과 시간이 늘어요)' },
-    { key: 'alch', color: '#3fdcc0', ch: '연', name: '연금술사', rng: 250, spd: 1.1, dmg: 6, desc: '독으로 지속 피해를 주고 느리게 한다 (등급이 오를수록 독이 세지고 더 느려져요)' },
+    { key: 'alch', color: '#3fdcc0', ch: '연', name: '연금술사', rng: 250, spd: 1.1, dmg: 6, desc: '독으로 지속 피해를 주고 느리게 하며, 독에 걸린 적의 치유(재생)를 줄인다 (등급이 오를수록 독이 세지고 더 느려지고 치유 감소가 커져요)' },
     { key: 'lancer', color: '#e6dc44', ch: '창', name: '창병', rng: 270, spd: 1.1, dmg: 10, desc: '일직선의 적을 꿰뚫고 "취약" 디버프를 걸어 받는 피해를 늘린다 (등급이 오를수록 커져요)' },
   ];
   const GRADES = [
@@ -569,7 +569,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     fast: { name: '질주', icon: '⚡', desc: '아주 빠르게 달리지만 체력이 낮다' },
     tank: { name: '거구', icon: '🪨', desc: '느리지만 체력이 아주 높다' },
     shield: { name: '보호막', icon: '🔵', desc: '체력과 별개의 보호막이 먼저 깎인다' },
-    regen: { name: '재생', icon: '💚', desc: '체력이 서서히 회복된다 (독에 걸리면 멈춘다)' },
+    regen: { name: '재생', icon: '💚', desc: '체력이 서서히 회복된다 (독에 걸리면 회복이 줄어든다)' },
     armor: { name: '장갑', icon: '🛡️', desc: '약한 공격은 크게 줄여서 받는다' },
     ghost: { name: '회피', icon: '👻', desc: '공격을 25% 확률로 피한다' },
     rage: { name: '분노', icon: '🔥', desc: '체력이 절반 아래로 떨어지면 빨라진다' },
@@ -864,6 +864,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   const MONK_STUN = [0.07, 0.09, 0.12, 0.15, 0.2, 0.27];         // 무도가: 기절 확률
   const MONK_STUN_T = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0], MONK_STUN_B = [0.2, 0.25, 0.3, 0.35, 0.5, 0.7];  // 일반 / 보스 기절 시간
   const ALCH_POI = [0.85, 0.95, 1.05, 1.15, 1.35, 1.6];           // 연금술사: 독 피해 배율
+  const ALCH_HEAL = [0.25, 0.30, 0.35, 0.40, 0.45, 0.70];          // 연금술사: 독에 걸린 적의 치유(재생) 감소
   const ALCH_SLOW = [0.8, 0.75, 0.7, 0.65, 0.58, 0.5];            // 연금술사: 이동 속도 배율 (작을수록 느림)
   const pct = v => Math.round(v * 100) + '%';
   function debuffText(u) {
@@ -872,7 +873,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       case 'sword': return '보호막 있는 적에게 피해 +' + pct(SWORD_SHIELD[g]);
       case 'lancer': return '취약: 맞은 적이 ' + VULN_T + '초간 받는 피해 +' + pct(LANCER_VULN[g]);
       case 'monk': return '기절 확률 ' + pct(MONK_STUN[g]) + ' · 기절 ' + MONK_STUN_T[g] + '초 (보스 ' + MONK_STUN_B[g] + '초)';
-      case 'alch': return '독 피해 x' + ALCH_POI[g] + ' · 이동 속도 ' + pct(ALCH_SLOW[g]) + '로 감소';
+      case 'alch': return '독 피해 x' + ALCH_POI[g] + ' · 이동 속도 ' + pct(ALCH_SLOW[g]) + '로 감소 · 치유 ' + pct(ALCH_HEAL[g]) + ' 감소';
       case 'gunner': return '사거리 맵 전체 · 보스에게 주는 피해 강화(저격 조준)';
       default: return '';
     }
@@ -936,7 +937,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       if (e.poT > 0) { e.poT -= dt; g.cur = e.poSrc || null; damage(g, e, e.poDps * dt, true); g.cur = null; if (e.dead) continue; }
       if (e.dodge > 0) e.dodge -= dt;
       if (e.vulnT > 0) e.vulnT -= dt;
-      if (e.tr.includes('regen') && e.poT <= 0 && e.hp < e.maxHp) e.hp = Math.min(e.maxHp, e.hp + e.maxHp * 0.025 * dt);
+      if (e.tr.includes('regen') && e.hp < e.maxHp) e.hp = Math.min(e.maxHp, e.hp + e.maxHp * 0.025 * dt * (e.poT > 0 ? 1 - (e.poHeal || 0) : 1));
       const rage = e.tr.includes('rage') && e.hp <= e.maxHp * 0.5 ? 1.6 : 1;
       if (e.stunImm > 0) e.stunImm -= dt; if (e.stunT > 0) { e.stunT -= dt; if (e.stunT <= 0) { e.stunT = 0; e.stunImm = 0.5; } }
       else { if (e.slowT > 0) e.slowT -= dt; e.d += e.spd * rage * (e.slowT > 0 ? e.slowF : 1) * dt; }
@@ -1000,7 +1001,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
         }
         case 'alch': {
           const rad = Math.max([0, 60, 100][tier], UP.c ? 40 + 20 * UP.c : 0); sh.r = rad;
-          const poison = e => { e.poSrc = g.cur; e.poDps = Math.max(e.poDps * (e.poT > 0 ? 1 : 0), dm * ALCH_POI[u.grade] * (1 + 0.25 * UP.b)); e.poT = lg ? 3 : 2.5; e.slowT = 2; e.slowF = Math.min(0.92, ALCH_SLOW[u.grade] + (e.boss ? 0.15 : 0)); };
+          const poison = e => { e.poSrc = g.cur; e.poDps = Math.max(e.poDps * (e.poT > 0 ? 1 : 0), dm * ALCH_POI[u.grade] * (1 + 0.25 * UP.b)); e.poHeal = Math.max(e.poT > 0 && e.poHeal ? e.poHeal : 0, ALCH_HEAL[u.grade]); e.poT = lg ? 3 : 2.5; e.slowT = 2; e.slowF = Math.min(0.92, ALCH_SLOW[u.grade] + (e.boss ? 0.15 : 0)); };
           damage(g, tgt, dm); poison(tgt);
           if (rad) for (const e of en) if (e !== tgt && !e.dead && (e.x - tgt.x) ** 2 + (e.y - tgt.y) ** 2 <= rad * rad) { if (lg) damage(g, e, dm); poison(e); }
           break;
