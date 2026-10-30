@@ -451,7 +451,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
         <p>미션 창의 '자리 이동'에서 원하는 번호(1~10번)를 고르면 그 자리의 자리 미션으로 바뀌어요. 9번·10번은 1번·2번과 같은 미션이에요. '자동'은 방에 들어온 순서대로 정해져요.</p>
         <h4>🛠️ 직업별 특징</h4>
         <p>검사와 궁수는 고유 강화 두 개(검사: 연속 베기·처형 / 궁수: 속사·관통 사격)를 한 단계 올릴 때마다 공격력이 10%씩 더 올라요. 둘 다 5단계까지 올리면 공격력이 두 배가 돼요.</p>
-        <p>검사·궁수: 고유 강화(2종)를 한 단계 올릴 때마다 공격력이 늘어요(검사 20%, 궁수 10%). 검사: 보호막이 있는 몬스터에게 추가 피해(등급이 오를수록 커져요). 창병: 맞은 몬스터에게 '취약' 디버프를 걸어 잠깐 동안 받는 피해를 늘려요. 무도가: 공격 속도는 느리지만 한 방이 묵직하고, 등급이 오를수록 기절 확률과 시간이 늘어요. 이미 기절한 몬스터는 기절이 길어지지 않고, 기절이 풀린 뒤 0.5초 동안은 다시 기절하지 않아요. 기절이 풀린 몬스터는 0.5초 동안 다시 기절하지 않아요. 연금술사: 등급이 오를수록 독이 세지고 몬스터를 더 느리게 하며, 독에 걸린 몬스터의 치유(재생)를 25/30/35/40/45/70% 줄여요. 거너: 사거리가 맵 전체이고 체력이 가장 높은 적(보스)을 노려요. 햄스터를 선택하면 그 등급의 효과 수치가 나와요.</p>
+        <p>검사·궁수: 고유 강화(2종)를 한 단계 올릴 때마다 공격력이 늘어요(검사 20%, 궁수 10%). 검사: 보호막이 있는 몬스터에게 추가 피해(등급이 오를수록 커져요). 창병: 맞은 몬스터에게 '취약' 디버프를 걸어 잠깐 동안 받는 피해를 늘려요. 무도가: 공격 속도는 느리지만 한 방이 묵직하고, 등급이 오를수록 기절 확률과 시간이 늘어요. 이미 기절한 몬스터는 기절이 길어지지 않고, 기절이 풀린 뒤 0.5초 동안은 다시 기절하지 않아요. 기절이 풀린 몬스터는 0.5초 동안 다시 기절하지 않아요. 연금술사: 등급이 오를수록 독이 세지고 몬스터를 더 느리게 하며, 독에 걸린 몬스터의 치유(재생)를 모든 등급에서 100% 막아요. 거너: 사거리가 맵 전체이고 체력이 가장 높은 적(보스)을 노려요. 햄스터를 선택하면 그 등급의 효과 수치가 나와요.</p>
         <h4>👾 몬스터</h4>
         <p>스테이지마다 몬스터가 한 종류씩 나와요. 10스테이지부터는 분열·재생·빠름·장갑·보호막·회피·분노·무리·튼튼함 같은 특성이 붙어요. 오른쪽 몬스터 정보창에서 체력과 특성을 볼 수 있어요. 골드는 웨이브의 몬스터를 모두 없앴을 때 받고, 다음 웨이브는 그때부터 대기 시간이 지나야 시작해요.</p>
         <h4>💎 보석과 직업 강화</h4>
@@ -537,7 +537,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     { key: 'rogue', color: '#b57cff', ch: '도', name: '도적', rng: 220, spd: 3.2, dmg: 4.5, desc: '아주 빠르고 가끔 치명타를 낸다' },
     { key: 'gunner', color: '#ffa63c', ch: '거', name: '거너', rng: 2600, spd: 0.55, dmg: 27, desc: '사거리가 맵 전체예요. 체력이 가장 높은 적(보스)을 노리는 보스 사냥꾼이에요' },
     { key: 'monk', color: '#ff86bd', ch: '무', name: '무도가', rng: 170, spd: 0.9, dmg: 27, desc: '느리지만 묵직하게 때리고 가끔 적을 기절시킨다 (등급이 오를수록 기절 확률과 시간이 늘어요)' },
-    { key: 'alch', color: '#3fdcc0', ch: '연', name: '연금술사', rng: 250, spd: 1.1, dmg: 6, desc: '독으로 지속 피해를 주고 느리게 하며, 독에 걸린 적의 치유(재생)를 줄인다 (등급이 오를수록 독이 세지고 더 느려지고 치유 감소가 커져요)' },
+    { key: 'alch', color: '#3fdcc0', ch: '연', name: '연금술사', rng: 250, spd: 1.1, dmg: 6, desc: '독으로 지속 피해를 주고 느리게 하며, 독에 걸린 적의 치유(재생)를 완전히 막는다 (등급이 오를수록 독이 세지고 더 느려져요)' },
     { key: 'lancer', color: '#e6dc44', ch: '창', name: '창병', rng: 270, spd: 1.1, dmg: 10, desc: '일직선의 적을 꿰뚫고 "취약" 디버프를 걸어 받는 피해를 늘린다 (등급이 오를수록 커져요)' },
   ];
   const GRADES = [
@@ -611,7 +611,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     const g = {
       t: 0, stage: 0, maxS, lives: CFG.LIVES, gold: Math.max(0, Math.round(opt.startGold == null ? CFG.START_GOLD : opt.startGold)), wait: Math.max(0.5, opt.delay == null ? CFG.WAIT : opt.delay), delay: Math.max(0.5, opt.delay == null ? CFG.WAIT : opt.delay), units: [], enemies: [], fx: [], queue: [], spawnQ: [], up: JOBS.map(() => ({ a: 0, b: 0, c: 0 })), gems: Math.max(0, Math.round(opt.gems || 0)), nid: 1, uid: 1,
       kills: 0, leaked: 0, over: false, won: false, hpMul: opt.hpMul || 1, stageGold: Math.max(0, Math.round(opt.gold == null ? CFG.GOLD_STAGE : opt.gold)), fxOn: !!opt.fx, rnd: rngMaker(opt.seed || (Math.random() * 1e9) | 0),
-      maxStage: 0, events: [], spReady: [0, 0, 0, 0, 0], spCount: 0, draws: 0, merges: 0, bossKills: 0, streak: 0, bestStreak: 0, stageLeak0: 0, mdone: {}, picks: [], seat: opt.seat || 1, stat: {}, lastStat: null, cur: null,
+      maxStage: 0, events: [], spReady: [0, 0, 0, 0, 0], spCount: 0, spKills: 0, draws: 0, merges: 0, bossKills: 0, streak: 0, bestStreak: 0, stageLeak0: 0, mdone: {}, picks: [], seat: opt.seat || 1, stat: {}, lastStat: null, cur: null,
     };
     return g;
   }
@@ -709,7 +709,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     { id: 'k2', type: 'count', stat: 'kills', name: '사냥꾼 수첩', goal: 400, rw: { gems: 2, gold: 100 } },
     { id: 'k3', type: 'count', stat: 'kills', name: '몰이꾼의 자존심', goal: 800, rw: { gems: 3 } },
     { id: 'k4', type: 'count', stat: 'kills', name: '들판의 청소부', goal: 1200, rw: { gems: 4 } },
-    { id: 'k5', type: 'count', stat: 'kills', name: '끝없는 행렬', goal: 1700, rw: { pick: [2], gems: 5 } },
+    { id: 'k5', type: 'count', stat: 'kills', name: '끝없는 행렬', goal: 1700, rw: { pick: [5] } },
     { id: 'b1', type: 'count', stat: 'bossKills', name: '거인 길들이기', goal: 1, rw: { gems: 2 } },
     { id: 'b2', type: 'count', stat: 'bossKills', name: '왕관 수집가', goal: 3, rw: { pick: [2], gems: 3 } },
     { id: 'b3', type: 'count', stat: 'bossKills', name: '보스 사냥 전문', goal: 6, rw: { pick: [3], gems: 5 } },
@@ -724,6 +724,17 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     { id: 'u3', type: 'count', stat: 'upLv', name: '전설의 단련', goal: 30, rw: { gold: 1000, gems: 2 } },
     { id: 's1', type: 'count', stat: 'bestStreak', name: '새지 않는 방벽', goal: 10, rw: { gems: 2 } },
     { id: 's2', type: 'count', stat: 'bestStreak', name: '철벽 수문장', goal: 25, rw: { pick: [3], gems: 4 } },
+    // 중후반 미션 (보석은 아래에서 3배 적용되는 기준 값)
+    { id: 'c26', type: 'combo', name: '전설의 쌍두', req: [Q(-1, 5, 2)], rw: { pick: [4, 4], gems: 4, gold: 1000 } },
+    { id: 'c27', type: 'combo', name: '유니크 군단', req: [Q(-1, 4, 5)], rw: { pick: [3, 3], gold: 1000 } },
+    { id: 'c28', type: 'combo', name: '여덟 빛깔 명장', req: JN.map((_, j) => Q(j, 3, 1)), rw: { pick: [4], gems: 4, gold: 800 } },
+    { id: 'c29', type: 'combo', name: '다섯 빛깔 대가', req: [0, 1, 2, 3, 4].map(j => Q(j, 4, 1)), rw: { pick: [4], gems: 5, gold: 1500 } },
+    { id: 'c30', type: 'combo', name: '전설과 사도들', req: [Q(-1, 5, 1), Q(-1, 4, 2), Q(-1, 3, 3)], rw: { pick: [4], gems: 3, gold: 1500 } },
+    { id: 'sp1', type: 'count', stat: 'spKills', name: '특수보스 사냥꾼', goal: 3, rw: { gems: 6, gold: 1000 } },
+    { id: 'sp2', type: 'count', stat: 'spKills', name: '특수보스 학살자', goal: 8, rw: { pick: [4], gems: 8 } },
+    { id: 'm4', type: 'count', stat: 'merges', name: '합성의 달인', goal: 80, rw: { gems: 10 } },
+    { id: 'u4', type: 'count', stat: 'upLv', name: '강화 마스터', goal: 50, rw: { gems: 6, gold: 1500 } },
+    { id: 's3', type: 'count', stat: 'bestStreak', name: '무결점 수호자', goal: 40, rw: { pick: [4], gems: 5 } },
   ];
   // 자리 미션: 자리 번호는 들어온 순서(1~10). 직업이 8가지라서 9번은 1번, 10번은 2번 미션을 받는다 (순환).
   // 자리마다 한 직업만 모으는 미션 5개: 그 직업을 등급별로 모은다
@@ -732,6 +743,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     ['유니크', 4, 2, { pick: [4], gems: 5, gold: 500 }], ['레전더리', 5, 1, { gems: 8, gold: 1000 }],
   ];
   for (let k = 1; k <= 8; k++) SEAT_STEPS.forEach(([gn, gr, n, rw], i) => MISSIONS.push({ id: 'seat' + k + '_' + (i + 1), type: 'seat', seat: k, name: JN[k - 1] + ' 집합 ' + (i + 1) + '단계', req: [Q(k - 1, gr, n)], rw }));
+  { const seen = new Set(); MISSIONS.forEach(m => { if (m.rw.gems && !seen.has(m.rw)) { seen.add(m.rw); m.rw.gems *= 3; } }); }   // 미션 보석 보상은 전체 3배
   const seatKey = n => ((Math.max(1, n | 0) - 1) % 8) + 1;
   const statOfG = (g, key) => key === 'kills' ? g.kills : key === 'upLv' ? g.up.reduce((s, o) => s + o.a + o.b + o.c, 0) : (g[key] || 0);
   // 재료 배정: 직업이 정해진 조건을 먼저 채우고, '아무 직업' 조건은 남은 햄스터로 채운다
@@ -814,7 +826,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   const OVER_DMG = 0;
   const upBase = (job, k) => k === 'a' ? 250 : UPG[job][k][3];
   // 강화는 골드가 아니라 보석(💎)으로 한다. 보석은 골드로 살 수 있고(100골드 = 1개) 나중에 미션 보상으로도 얻는다.
-  const upCost = (job, k, lv) => Math.max(1, Math.round((k === 'a' ? 1 : UNIQ_COST) * upBase(job, k) * (lv < UP_MULT.length ? UP_MULT[lv] : UP_MULT[4] + 1.5 * (lv - 4)) / 120));   // lv = 지금 단계 (0부터), 단위는 보석
+  const upCost = (job, k, lv) => Math.max(1, Math.round(0.5 * (k === 'a' ? 1 : UNIQ_COST) * upBase(job, k) * (lv < UP_MULT.length ? UP_MULT[lv] : UP_MULT[4] + 1.5 * (lv - 4)) / 120));   // lv = 지금 단계 (0부터), 단위는 보석
   const upOf = (g, job) => g.up[job];
   // 실제 효과에 쓰는 단계: 고유 효과는 상한 단계까지만, 넘친 단계는 공격력 보너스로 바뀐다
   function effUp(g, job) { const o = g.up[job], b = Math.min(o.b, upCap(job, 'b')), c = Math.min(o.c, upCap(job, 'c')); return { a: o.a, b, c, over: (o.b - b) + (o.c - c) }; }
@@ -864,7 +876,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
   const MONK_STUN = [0.07, 0.09, 0.12, 0.15, 0.2, 0.27];         // 무도가: 기절 확률
   const MONK_STUN_T = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0], MONK_STUN_B = [0.2, 0.25, 0.3, 0.35, 0.5, 0.7];  // 일반 / 보스 기절 시간
   const ALCH_POI = [0.85, 0.95, 1.05, 1.15, 1.35, 1.6];           // 연금술사: 독 피해 배율
-  const ALCH_HEAL = [0.25, 0.30, 0.35, 0.40, 0.45, 0.70];          // 연금술사: 독에 걸린 적의 치유(재생) 감소
+  const ALCH_HEAL = [1, 1, 1, 1, 1, 1];          // 연금술사: 독에 걸린 적의 치유(재생) 감소
   const ALCH_SLOW = [0.8, 0.75, 0.7, 0.65, 0.58, 0.5];            // 연금술사: 이동 속도 배율 (작을수록 느림)
   const pct = v => Math.round(v * 100) + '%';
   function debuffText(u) {
@@ -910,7 +922,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     if (cs) cs.dmg += Math.max(0, Math.min(dmg, e.hp));
     e.hp -= dmg;
     if (e.hp <= 0) {
-      e.dead = true; g.kills++; if (e.special) { const gd = SPECIAL[e.special - 1].gold; g.gold += gd; g.events.push({ t: 'spkill', lv: e.special, gold: gd }); } else if (e.boss) { g.bossKills++; const bg = BOSS_PICK[e.stage]; if (bg != null) { g.picks.push(bg); g.events.push({ t: 'bosspick', s: e.stage, grade: bg }); } } if (cs) cs.kills++; if (g.fxOn) g.fx.push({ t: 'pop', x: e.x, y: e.y, age: 0, life: 0.35, boss: e.boss });
+      e.dead = true; g.kills++; if (e.special) { const gd = SPECIAL[e.special - 1].gold; g.gold += gd; g.spKills++; g.events.push({ t: 'spkill', lv: e.special, gold: gd }); } else if (e.boss) { g.bossKills++; const bg = BOSS_PICK[e.stage]; if (bg != null) { g.picks.push(bg); g.events.push({ t: 'bosspick', s: e.stage, grade: bg }); } } if (cs) cs.kills++; if (g.fxOn) g.fx.push({ t: 'pop', x: e.x, y: e.y, age: 0, life: 0.35, boss: e.boss });
       if (e.tr.includes('split') && !e.small) {
         const k = e.boss ? 5 : 2, f = e.boss ? 0.04 : 0.3;
         for (let i = 0; i < k; i++) g.spawnQ.push({ d: Math.max(0, e.d - i * 14), mon: e.mon, hp: e.maxHp * f, spd: e.baseSpd * 1.15, stage: e.stage });
@@ -2185,6 +2197,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
     bossKills: n => '보스 몬스터를 ' + n + '마리 처치하세요. (보스는 10스테이지마다 나와요)',
     draws: n => '뽑기를 ' + n + '번 하세요. (10번 뽑기는 10번으로 세요)',
     merges: n => '합성을 ' + n + '번 하세요. (같은 직업 합성, 랜덤 합성, 한꺼번에 합성 모두 포함)',
+    spKills: n => '특수보스를 ' + n + '마리 처치하세요. (판 아래 특수보스 버튼으로 불러서 잡아요)',
     upLv: n => '직업 강화를 모두 합쳐 ' + n + '단계 올리세요. (공격력·고유 강화 단계의 합계)',
     bestStreak: n => '목숨을 하나도 잃지 않고 ' + n + '개 스테이지를 연속으로 막아내세요. (한 마리라도 놓치면 처음부터 다시 세요)',
   };
@@ -2207,7 +2220,7 @@ body.big .tips,body.big .moninfo,body.big .upgbox,body.big .missbox{font-size:15
       const el = document.createElement('div'); el.className = 'msrow' + (inf.ready ? ' ready' : '') + (inf.done ? ' done' : '');
       const t = document.createElement('div'); t.className = 'mt'; const nm = document.createElement('b'); nm.textContent = m.name + (inf.done ? ' ✓' : ''); t.appendChild(nm);
       if (inf.ready) { const bt = document.createElement('button'); bt.type = 'button'; bt.className = 'btn small primary'; bt.textContent = m.type === 'count' ? '보상 받기' : '완성하기';
-        bt.addEventListener('click', () => { if (g.over || S.paused) return; const r = T.claimMission(g, m.id); if (r.ok) { HAudio.sys('merge'); toast('미션 완료: ' + m.name + ' → ' + rwText(m.rw)); if (g.picks.length) openM('m-pick'); sync(); } }); t.appendChild(bt); }
+        bt.addEventListener('click', () => { if (g.over || S.paused) return; const r = T.claimMission(g, m.id); if (r.ok) { HAudio.sys('merge'); toast('미션 완료: ' + m.name + ' → ' + rwText(m.rw)); if (m.rw.pick) openM('m-pick'); sync(); } }); t.appendChild(bt); }
       else if (!inf.done && m.type === 'count') { const sp = document.createElement('span'); sp.className = 'muted'; sp.textContent = fmt(inf.cur) + ' / ' + fmt(inf.goal); t.appendChild(sp); }
       el.appendChild(t);
       if (m.type === 'count') { const ds = document.createElement('div'); ds.className = 'muted'; ds.style.fontSize = '12px'; ds.textContent = STAT_DESC[m.stat](m.goal) + (inf.done ? '' : ' — ' + curText(m, inf)); el.appendChild(ds); }
